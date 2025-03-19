@@ -1,0 +1,170 @@
+﻿@using Microsoft.AspNetCore.Razor.Language.Extensions
+@model SharghPc.Web.Models.AddOrEditProductFeatureViewModels
+
+@{
+    ViewData["Title"] = "ویرایش ویژگی محصول";
+}
+
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">ویرایش ویژگی</h3>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                            <div class="nk-block-head-content">
+                                <div class="toggle-wrap nk-block-tools-toggle">
+                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+
+                                </div>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                        </div>
+                        <!-- .nk-block-between -->
+                    </div>
+                    <!-- .nk-block-head -->
+                    <div class="nk-block nk-block-lg">
+                        <div class="nk-block-head">
+                        </div>
+                        <div class="card">
+                            <div class="card-inner">
+
+                                <div class="col-md-6">
+
+                                    <div class="card card-bordered card-preview">
+                                        <div class="card-inner">
+                                            <table class="table">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th scope="col">ویژگی</th>
+                                                        <th scope="col">مقدار</th>
+                                                        <th scope="col">دستورات</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.ProductFeatures)
+                                                    {
+                                                        <tr feature-tabel-item="e-3">
+                                                            <th>@item.FeatureTitle</th>
+                                                            <th>@item.FeatureValue</th>
+                                                            <th>
+                                                                <a onclick="removeProductFeature('@item.Id')" class="btn btn-lg btn-danger">حذف </a>
+                                                            </th>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br />
+                                <form asp-area="Admin" asp-controller="Product" asp-action="EditProductFeatures" enctype="multipart/form-data" class="form-validate">
+                                    <input type="hidden" asp-for="productId" />
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                            <div class="form-group">
+
+                                                <label class="form-label">نام ویژگی</label>
+                                                <div class="form-control-wrap">
+                                                    <input asp-for="ProductFeatureDto.FeatureTitle" type="text" required="" class="form-control">
+                                                    <span class="text-danger field-validation-valid"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="form-label">مقدار</label>
+                                                <div class="form-control-wrap">
+                                                    <input asp-for="ProductFeatureDto.FeatureValue" required="" type="text" class="form-control">
+                                                    <span class="text-danger field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary">افزودن ویژگی جدید</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .nk-block -->
+                    <!-- .nk-block -->
+                </div>
+                <!-- .components-preview -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section AdminScripts
+{
+
+    <script>
+        function removeProductFeature(id) {
+            swal.fire({
+                title: "اخطار",
+                text: "آیا از حذف این آیتم اطمینان دارید ؟",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله  انجام شود',
+                cancelButtonText: 'خیر'
+            }).then((willDelete) => {
+                if (willDelete.value) {
+
+                    $.ajax({
+                        url: "/Admin/product/RemoveProductFeature",
+                        type: "get",
+                        data: {
+                            id: id
+                        },
+
+                        success: function (res) {
+
+                            if (res === true) {
+                                swal.fire(
+                                    'موفق!',
+                                    res.message,
+                                    'success'
+                                );
+
+                                location.reload();
+
+                            } else {
+                                swal.fire(
+                                    'خطا!',
+                                    res.message,
+                                    'success'
+                                );
+                            }
+
+                        },
+                        error: function () {
+
+                        }
+                    });
+
+                }
+            });
+        };
+
+
+    </script>
+}

@@ -1,0 +1,135 @@
+﻿@using SharghPc.Web.PresentationExtensions
+@model SharghPc.DataLayer.Entites.ProductOrder.Order
+
+
+
+
+
+<!-- main header @@s -->
+<!-- main header @@e -->
+<!-- content @@s -->
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head">
+                    <div class="nk-block-between g-3">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">
+                                شماره فاکتور<strong class="text-primary small">@Model.RequestPayId </strong>
+                            </h3>
+                            <div class="nk-block-des text-soft">
+                                <ul class="list-inline">
+                                    <li>
+                                        ایجاد شده در:
+                                        <span class="text-base">@DateTime.Now.ToShamsiDate()</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="nk-block-head-content">
+                            <a href="/Admin/order" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>بازگشت</span></a>
+                            <a href="/Admin/order" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="invoice">
+                        <div class="invoice-action">
+                            <a class="btn btn-icon btn-lg btn-white btn-dim btn-outline-primary" asp-area="Admin" asp-controller="Order" asp-action="OrderPrint" asp-route-Id="@Model.Id" target="_blank"><em class="icon ni ni-printer-fill"></em></a>
+                        </div>
+                        <!-- .invoice-actions -->
+                        <div class="invoice-wrap">
+                            <div class="invoice-brand text-center">
+                                <img src="~/logo2.png" srcset="images/logo-dark2x.png 2x" alt="logo" />
+                            </div>
+                            <div class="invoice-head">
+                                <div class="invoice-contact">
+                                    <span class="overline-title">فاکتور به</span>
+                                    <div class="invoice-contact-info">
+                                        <h4 class="title">@(Model.User.FirstName + " " + Model.User.LastName)</h4>
+                                        <ul class="list-plain">
+                                            <li>
+                                                <em class="icon ni ni-map-pin-fill"></em>
+                                                <span>
+                                                    @Model.Shipment.FullAddress<br />
+
+                                                </span>
+                                            </li>
+                                            <li><em class="icon ni ni-call-fill"></em><span>@Model.User.Mobile</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="invoice-desc">
+                                    <h3 class="title">فاکتورها</h3>
+                                    <ul class="list-plain">
+                                        <li class="invoice-id"><span>شناسه فاکتور</span>:<span>@Model.RequestPayId</span></li>
+                                        <li class="invoice-date"><span>تاریخ</span>:<span> @DateTime.Now.ToShamsiDate()</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- .invoice-head -->
+                            <div class="invoice-bills">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="w-150px">شناسه کالا</th>
+                                                <th>قیمت</th>
+                                                <th>تعداد</th>
+                                                <th>مبلغ کل</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.OrderDetails)
+                                            {
+                                                <tr>
+                                                    <td>@item.ProductId</td>
+
+                                                    <td>@item.ProductPrice.ToString("n0") تومان</td>
+                                                    <td>@item.Count</td>
+                                                    <td>@(item.Count * item.ProductPrice) تومان</td>
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                <td colspan="2">جمع جزء</td>
+                                                <td>@Model.RequestPay.Amount.ToString("n0") تومان</td>
+                                            </tr>
+                                          
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                <td colspan="2">مالیات</td>
+                                                <td>0 تومان</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                <td colspan="2">جمع کل</td>
+                                                <td>@Model.RequestPay.Amount.ToString("n0") تومان</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div class="nk-notes ff-italic fs-12px text-soft">
+                                        فاکتور در کامپیوتر ایجاد شده است و بدون امضا و مهر معتبر است.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .invoice-bills -->
+                        </div>
+                        <!-- .invoice-wrap -->
+                    </div>
+                    <!-- .invoice -->
+                </div>
+                <!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @@e -->
+<!-- footer @@s -->
+<!-- footer @@e -->

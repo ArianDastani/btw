@@ -1,0 +1,151 @@
+﻿@using SharghPc.DataLayer.Entites.Product
+@using SharghPc.DataLayer.DTOs.Product
+@model SharghPc.DataLayer.DTOs.Product.FilterProductDto
+
+@{
+    ViewData["Title"] = " لیست محصولات |";
+    ViewData["description"] = "فروشگاه خدمات کامپیوتر شرق ارائه دهنده انواع لوازم جانبی لپ تاپ کامپیوتر و گوشی های موبایل از برند های معتبر و همچنین ارائه دهنده تمامی خدمات تعمیرات سخت افزار و نرم افزار مربوط به لپ تاپ و کامپیوتر";
+    ViewData["keywords1"] = "sharghpc";
+    ViewData["keywords2"] = "خدمات کامپیوتر شرق";
+    ViewData["keywords3"] = "محصولات";
+    ViewData["keywords4"] = "شرق پی سی";
+    ViewData["og:title"] = "خدمات کامپیوتر شرق";
+    ViewData["og:description"] = "فروشگاه خدمات کامپیوتر شرق ارائه دهنده انواع لوازم جانبی لپ تاپ کامپیوتر و گوشی های موبایل از برند های معتبر و همچنین ارائه دهنده تمامی خدمات تعمیرات سخت افزار و نرم افزار مربوط به لپ تاپ و کامپیوتر";
+    ViewData["twitter:title"] = "خدمات کامپیوتر شرق";
+    ViewData["twitter:description"] = "فروشگاه خدمات کامپیوتر شرق ارائه دهنده انواع لوازم جانبی لپ تاپ کامپیوتر و گوشی های موبایل از برند های معتبر و همچنین ارائه دهنده تمامی خدمات تعمیرات سخت افزار و نرم افزار مربوط به لپ تاپ و کامپیوتر";
+    ViewData["canonicalUrl"] = Model.Category;
+
+    var categories = ViewBag.ProductCategory as List<ProductCategory>;
+}
+
+<form asp-controller="Product" asp-action="FilterProduct" method="get" id="formProductFilter">
+
+    <main class="main">
+
+        <div class="site-breadcrumb">
+            <div class="site-breadcrumb-bg" style="background: url(assets/img/breadcrumb/01.jpg)"></div>
+            <div class="container">
+                <div class="site-breadcrumb-wrap">
+                    <h4 class="breadcrumb-title">محصولات</h4>
+                    <ul class="breadcrumb-menu">
+                        <li><a href="/"><i class="far fa-home"></i> صفحه اصلی</a></li>
+                        <li class="active">محصولات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="shop-area2 py-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="shop-sidebar mb-0">
+                           
+                            <div class="shop-widget">
+                                <h4 class="shop-widget-title">دسته</h4>
+                                <ul class="shop-category-list">
+                                    @if (categories != null)
+                                    {
+                                        @foreach (var category in categories.Where(x=>x.ParentId==null))
+                                        {
+                                            <li><a asp-controller="Product" asp-action="FilterProduct" asp-route-Category="@category.UrlName">@category.Title</a></li>
+
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                       
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="col-md-12">
+                            <div class="shop-sort">
+                                <div class="shop-sort-box">
+                                    <div class="shop-sorty-label">مرتب سازی بر اساس:</div>
+                                    <select class="select" asp-for="FilterProductOrderBy" asp-items="@(Html.GetEnumSelectList<FilterProductOrderBy>())">
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="shop-item-wrapper item-2">
+                            <div class="row">
+                                @if (Model.Products != null && Model.Products.Any())
+                                {
+                                    @foreach (var item in Model.Products.Where(x=>x.IsActive==true))
+                                    {
+                                        <div class="col-6 col-md-6 col-lg-4">
+                                            <div class="product-item">
+                                                <div class="product-img">
+                                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id" >
+                                                        <img src="~/content/productimgae/@item.ImageName" alt>
+                                                    </a>
+                                                    <div class="product-action-wrap">
+                                                        <div class="product-action">
+
+                                                            <a onclick="addProductToOrderList('@item.Id')" data-bs-placement="left" data-tooltip="tooltip"
+                                                               title="اضافه کردن به علاقه مندی ها"><i class="far fa-heart"></i></a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3 class="product-title">
+                                                        <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id" >@item.Title</a>
+                                                    </h3>
+
+                                                    <div class="product-bottom">
+                                                        <div class="product-price">
+                                                            <span>@item.Price.ToString("n0")</span>
+                                                            <p class="product-p"> تومان</p>
+                                                        </div>
+                                                        <br/>
+                                                        @if (item.Inventory <= 0)
+                                                        {
+                                                            <button type="button" class="product-cart-btn">اتمام موجودی</button>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <button onclick="addProductToOrderList('@item.Id')" type="button" class="product-cart-btn">افزودن به سبد خرید</button>
+
+                                                        }
+
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+</form>
+@section Scripts
+    {
+    <script>
+        $('#FilterProductOrderBy').on('change', function () {
+            $('#formProductFilter').submit();
+        });
+    </script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.ajax.min.js"></script>
+
+    <script src="~/custom.js"></script>
+
+}

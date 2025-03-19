@@ -1,0 +1,41 @@
+﻿@using System.Security.Claims
+<div class="col-lg-3">
+    <div class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-profile-img">
+                <img src="~/images/icon-user.png" alt>
+                
+            </div>
+            <h5>@User.FindFirstValue("UserName")</h5>
+            <p>
+                <a class="__cf_email__">@User.Identity.Name</a>
+            </p>
+        </div>
+
+        <ul class="sidebar-list">
+            <li>
+                <a class="active" href="/dashboard"><i class="far fa-gauge-high"></i> داشبورد</a>
+            </li>
+            <li><a asp-area="User" asp-controller="Acount" asp-action="Profile"><i class="far fa-user"></i> نمایه من</a></li>
+            <li>
+                <a href="/cart">
+                    <i class="far fa-shopping-bag"></i> سبد خرید من
+                </a>
+            </li>
+            <li>
+                <a href="/dashboard">
+                    <i class="far fa-shopping-bag"></i> فهرست سفارشات من 
+                </a>
+            </li>
+            <li><a asp-area="User" asp-controller="Shipment" asp-action="Index"><i class="far fa-location-dot"></i> آدرس من</a></li>
+          
+            <li>
+                <a href="track-order.html"><i class="far fa-map-location-dot"></i> پیگیری سفارشات</a>
+            </li>
+
+            <li><a asp-area="User" asp-controller="Acount" asp-action="ChangePassword"><i class="far fa-gear"></i> تغییر رمز عبور</a></li>
+
+            <li><a asp-area="" asp-controller="Account" asp-action="LogOut"><i class="far fa-sign-out"></i> خروج</a></li>
+        </ul>
+    </div>
+</div>

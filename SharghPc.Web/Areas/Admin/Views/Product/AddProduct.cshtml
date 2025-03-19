@@ -1,0 +1,278 @@
+﻿@using SharghPc.DataLayer.Entites.Product
+@model SharghPc.DataLayer.DTOs.Product.AddProductDto
+
+@{
+    ViewData["Title"] = "افزودن محصول";
+    var categories = ViewBag.Categories as List<ProductCategory>;
+}
+
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">افزودن محصول</h3>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                            <div class="nk-block-head-content">
+                                <div class="toggle-wrap nk-block-tools-toggle">
+                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+
+                                </div>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                        </div>
+                        <!-- .nk-block-between -->
+                    </div>
+                    <!-- .nk-block-head -->
+                    <div class="nk-block nk-block-lg">
+                        <div class="nk-block-head">
+                        </div>
+                        <div class="card">
+                            <div class="card-inner">
+                                <form asp-area="Admin" asp-controller="Product" asp-action="AddProduct" enctype="multipart/form-data" id="product_form" class="form-validate">
+                                    <div class="row g-gs">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Title" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Title" required />
+                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">تصویر اصلی محصول</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-icon form-icon-right">
+                                                        <em class="icon ni ni-image"></em>
+                                                    </div>
+                                                    <input name="image" type="file" accept=".jpg,.jpeg,.png,.webp" class="form-control" name="image" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">قیمت</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="input-group">
+                                                        <input asp-for="Price" class="form-control" required />
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text" id="fv-price">قیمت</span>
+                                                        </div>
+                                                        <span asp-validation-for="Price" class="text-danger"></span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Inventory" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="number" class="form-control" asp-for="Inventory" required />
+                                                    <span asp-validation-for="Inventory" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">توضیحات کوتاه</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="ShortDescription" required />
+                                                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label" asp-for="Description"></label>
+                                                <div class="form-control-wrap">
+                                                    <textarea class="form-control form-control-sm" asp-for="Description" placeholder="توضیحات خود را بنویسید" required></textarea>
+                                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">ویژگی ها</label>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+
+                                                        <div class="form-group">
+
+                                                            <label class="form-label">نام ویژگی</label>
+                                                            <div class="form-control-wrap">
+                                                                <input id="product_featureTitle_input" type="text" class="form-control">
+                                                                <span class="text-danger field-validation-valid"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label class="form-label">مقدار</label>
+                                                            <div class="form-control-wrap">
+                                                                <input id="product_featureValue_input" type="text" class="form-control">
+                                                                <span class="text-danger field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button id="add_product_feature" class="btn btn-lg btn-primary">افزودن ویژگی</button>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="col-md-6">
+
+                                                    <div class="card card-bordered card-preview">
+                                                        <div class="card-inner">
+                                                            <table class="table">
+                                                                <thead class="table-dark">
+                                                                    <tr>
+                                                                        <th scope="col">ویژگی</th>
+                                                                        <th scope="col">مقدار</th>
+                                                                        <th scope="col">دستورات</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="list_of_product_feature">
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">دسته بندی</label>
+                                                <div class="dropdown-preview">
+                                                    <div class="">
+
+                                                        @if (categories != null && categories.Any())
+                                                        {
+                                                            @foreach (var category in categories.Where(s => s.ParentId == null))
+                                                            {
+                                                                <ul>
+                                                                    <li>
+                                                                        <label>
+                                                                            <input type="checkbox" name="@nameof(Model.SelectCategories)" value="@category.Id" main_category_checkbox="@category.Id" /> @category.Title
+                                                                        </label>
+
+                                                                        <div id="sub_categories_@category.Id" style="display:none">
+
+                                                                            @foreach (var subCategory in categories.Where(s => s.ParentId == category.Id))
+                                                                            {
+                                                                                <label>
+                                                                                    <input type="checkbox" name="@nameof(Model.SelectCategories)" value="@subCategory.Id" main_category_checkbox="@subCategory.Id" parent-category-id="@category.Id" /> @subCategory.Title
+                                                                                </label>
+                                                                                <div id="sub_categories_@subCategory.Id" style="display:none">
+
+                                                                                    @foreach (var secondSubCategory in categories.Where(s => s.ParentId == subCategory.Id))
+                                                                                    {
+                                                                                        <label>
+                                                                                            <input type="checkbox" name="@nameof(Model.SelectCategories)" value="@secondSubCategory.Id" parent-category-id="@subCategory.Id" /> @secondSubCategory.Title
+                                                                                        </label>
+                                                                                    }
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </li>
+
+                                                                </ul>
+                                                                <hr />
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary">ذخیره محصول</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .nk-block -->
+                    <!-- .nk-block -->
+                </div>
+                <!-- .components-preview -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section AdminScripts
+    {
+    <script>
+        $("[main_category_checkbox]").on('change', function (e) {
+            var isChecked = $(this).is(':checked');
+            var parentId = $(this).attr('main_category_checkbox');
+            if (isChecked) {
+                $('#sub_categories_' + parentId).slideDown(300);
+            } else {
+                $('#sub_categories_' + parentId).slideUp(300);
+                //var subcategories = $('[parent-category-id="' + parentId + '"]');
+                $('[parent-category-id="' + parentId + '"]').prop('checked', false);
+            }
+
+        });
+
+        $('#add_product_feature').on('click', function (e) {
+            e.preventDefault();
+            var productFeatureName = $('#product_featureTitle_input').val();
+            var productFeaturevalue = $('#product_featureValue_input').val();
+
+            if (productFeatureName == "" || productFeatureName == null || productFeaturevalue == "" || productFeaturevalue == null) {
+
+                alert("نام و مقدار ویژگی را وارد کنید");
+
+            } else {
+
+                var currentFeatureCount = $('#list_of_product_feature tr');
+                var index = currentFeatureCount.length;
+
+                var featureNameNode = `<input type="hidden" value="${productFeatureName}" name="ProductFeatures[${index}].FeatureTitle" feature-titile-hidden-input="${productFeatureName}-${productFeaturevalue}" >`;
+                var featureValueNode = `<input type="hidden" value="${productFeaturevalue}" name="ProductFeatures[${index}].FeatureValue" feature-value-hidden-input="${productFeatureName}-${productFeaturevalue}" >`;
+
+                $('#product_form').append(featureNameNode);
+                $('#product_form').append(featureValueNode);
+
+                var productFeatureNode = `<tr feature-tabel-item="${productFeatureName}-${productFeaturevalue}">    <th>${productFeatureName}</th>   <th>${productFeaturevalue}</th>   <th><a onclick="remove_product_feature('${productFeatureName}-${productFeaturevalue}')" class="btn btn-lg btn-danger">حذف ویژگی</a></th>      </tr>`;
+
+                $('#list_of_product_feature').append(productFeatureNode);
+
+                $('#product_featureTitle_input').val('');
+                $('#product_featureValue_input').val('');
+            }
+
+
+
+        });
+
+
+        function remove_product_feature(index) {
+            $('[feature-titile-hidden-input="' + index + '"]').remove();
+            $('[feature-value-hidden-input="' + index + '"]').remove();
+            $('[feature-tabel-item="' + index + '"]').remove();
+
+        };
+
+    </script>
+}

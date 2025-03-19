@@ -1,0 +1,70 @@
+﻿@model SharghPc.DataLayer.Entites.Carts.Cart
+
+@{
+    long totalCount = 0;
+    @if (Model != null)
+    {
+
+
+        @if (Model.CartItems != null || Model.CartItems.Any())
+        {
+            @foreach (var item in Model.CartItems)
+            {
+                totalCount += item.Count * (item.Product.Price);
+            }
+        }
+    }
+}
+<li class="dropdown-cart">
+    <a href="#" class="shop-cart list-item">
+        <i class="far fa-shopping-bag"></i>
+        <span>@Model.CartItems.Count</span>
+        سبد خرید
+    </a>
+    <div class="dropdown-cart-menu">
+        @if (Model != null)
+        {
+            <div class="dropdown-cart-header">
+                <span>@Model.CartItems.Count مورد</span>
+                <a href="/cart">مشاهده سبد خرید</a>
+            </div>
+            <ul class="dropdown-cart-list">
+                @foreach (var item in Model.CartItems.Where(x => x.IsDelete == false))
+                {
+                    <li>
+                        <div class="dropdown-cart-item">
+                            <div class="cart-img">
+                                <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Product.Id"><img src="~/content/productimgae/@item.Product.ImageName" alt="#"></a>
+                            </div>
+                            <div class="cart-info">
+                                <h4><a href="#">@item.Product.Title</a></h4>
+                                <p class="cart-qty">
+
+                                    <span style="font-size:13px;" class="cart-amount">@item.Count عدد @item.Price.ToString("#,0") تومان </span>
+                                </p>
+                            </div>
+                            <a onclick="RemoveProductFromCart(@item.Id)" class="cart-remove" title="حذف این مورد"><i class="far fa-times-circle"></i></a>
+                        </div>
+                    </li>
+                }
+
+
+            </ul>
+            <div class="dropdown-cart-bottom">
+                <div class="dropdown-cart-total">
+                    <span>مجموع</span>
+                    <span class="total-amount">@totalCount.ToString("#,0") تومان</span>
+                </div>
+                <a href="/cart" class="theme-btn"> مشاهده سبد خرید</a>
+            </div>
+        }
+        else
+        {
+            <h4>سبد خرید شما خالی است</h4>
+
+        }
+
+    </div>
+
+</li>
+

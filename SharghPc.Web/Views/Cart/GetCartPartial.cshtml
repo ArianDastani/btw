@@ -1,0 +1,95 @@
+﻿@model SharghPc.DataLayer.Entites.Carts.Cart
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <table class="table cart-table table-responsive-xs striped-table">
+                <thead>
+                    <tr class="table-head">
+                        <th scope="col">تصویر</th>
+                        <th scope="col">نام محصول</th>
+                        <th scope="col">قیمت</th>
+                        <th scope="col">تعداد</th>
+                        <th scope="col">عملکرد</th>
+                        <th scope="col">مجموع</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.CartItems != null || Model.CartItems.Any())
+                    {
+
+                        @foreach (var item in Model.CartItems.Where(x => x.IsDelete == false))
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="~/content/productimgae/@item.Product.ImageName" alt="@item.Product.Title"></a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id">@item.Product.Title</a>
+                                    <div class="mobile-cart-content row">
+                                        <div class="col-xs-3">
+                                            <div class="qty-box">
+                                                <div class="input-group">
+                                                    <input type="text" name="quantity" class="form-control input-number" value="@item.Count">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <h2 class="td-color">@item.Product.Price.ToString("#,0") تومان</h2>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <h2 class="td-color"><a href="#" class="icon">حذف محصول</a></h2>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h2 style="font-size:16px;">@item.Product.Price.ToString("#,0")  تومان</h2>
+                                </td>
+                                <td>
+                                    <div class="qty-box">
+                                        <div class="input-group">
+                                            <input type="number" name="quantity" onchange="changeCartItemCount(@item.Id)" class="form-control input-number" value="@item.Count">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><a style="cursor:pointer;" onclick="RemoveProductFromCart(@item.Id)" class="icon">حذف آیتم</a></td>
+                                <td>
+                                    @{
+                                        long price = item.Count * item.Product.Price;
+                                    }
+                                    <h2 style="font-size:16px;" class="td-color">@price.ToString("#,0") تومان</h2>
+                                </td>
+                            </tr>
+
+                        }
+
+                    }
+
+                </tbody>
+
+            </table>
+            <table class="table cart-table table-responsive-md">
+                <tfoot>
+                    <tr>
+                        <td>جمع کل :</td>
+                        <td>
+                            <h2 style="font-size:14.5px;">@Model.CartItems.Sum(x=>x.Price * x.Count).ToString("#,0") تومان</h2>
+                        </td>
+
+                    </tr>
+
+                </tfoot>
+            </table>
+        </div>
+
+    </div>
+    <div class="row cart-buttons">
+
+
+        <div class="col-6"><a href="#" class="btn btn-solid">ادامه خرید</a></div>
+        <div class="col-6"><a href="#" class="btn btn-solid">پرداخت فاکتور</a></div>
+
+
+    </div>
+</div>

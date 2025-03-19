@@ -1,0 +1,617 @@
+﻿@using SharghPc.DataLayer.Entites.Product
+@{
+    var productCategories = ViewBag.ProductCategories as List<ProductCategory>;
+}
+@model List<SharghPc.DataLayer.DTOs.Contact.GetContatsDtoForSiteDto>
+<header class="header">
+
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-wrapper">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="header-top-left">
+                            <center>
+                                <p style="font-size:13px;">@Model.FirstOrDefault(x=>x.ContactTypeId==5).Value.ToString()</p>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-middle">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-5 col-lg-3 col-xl-3">
+                    <div class="header-middle-logo">
+                        <a class="navbar-brand" href="/">
+                            <img src="~/logo2.png" alt="logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="d-none d-lg-block col-lg-6 col-xl-5">
+                    <div class="header-middle-search">
+                        <form asp-controller="Product" asp-action="searchProduct">
+                            <div class="search-content">
+                                <select class="select" style="display: none;">
+                                   
+                                </select><div class="nice-select select" tabindex="0"><span class="current">همه دسته</span><ul class="list"><li data-value="" class="option selected">همه دسته</li><li data-value="1" class="option">تخفیفات داغ امروز</li><li data-value="2" class="option">مد و لوازم جانبی</li><li data-value="3" class="option">الکترونیک</li><li data-value="4" class="option">خواربارفروشی و بازار</li><li data-value="5" class="option">موسیقی</li><li data-value="6" class="option">خانه و مبلمان</li><li data-value="7" class="option">اسباب بازی و بازی های ویدیویی</li><li data-value="8" class="option">هدایا</li><li data-value="9" class="option">کودکان و مادران</li><li data-value="10" class="option">ورزش و فضای باز</li><li data-value="11" class="option">سلامت و زیبایی</li></ul></div>
+                                <input name="title" type="text" class="form-control" placeholder="در اینجا جستجو کنید...">
+                                <button type="submit" class="search-btn"><i class="far fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-7 col-lg-3 col-xl-4">
+                    <div class="header-middle-right">
+                        <ul class="header-middle-list">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-area="User" asp-controller="Home" asp-action="DashBoard" class="list-item"><i class="far fa-user-circle"></i> ورود به پنل</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Account" asp-action="Login" class="list-item"><i class="far fa-user-circle"></i> ورود</a></li>
+                            }
+
+                            @await Component.InvokeAsync("GetCart")
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-navigation">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container position-relative">
+                <a class="navbar-brand" href="/">
+                    <img src="~/logo2.png" class="logo-scrolled" alt="logo">
+                </a>
+@*                <div class="category-all">
+                    <button class="category-btn" type="button">
+                        <i class="far fa-grid-2-plus"></i><span>همه دسته ها</span>
+                    </button>
+                    <ul class="main-category hide-category">
+                        @foreach (var category in productCategories.Where(x => x.ParentId == null))
+                        {
+                            <li>
+                                <a href="#">
+                                    <img src="~/assets/img/icon/grocery.svg" alt>
+                                    <span>@category.Title</span><i class="far fa-angle-left"></i>
+                                </a>
+                                <div class="sub-category-mega">
+                                    <div class="row">
+                                        @foreach (var subCategory in productCategories.Where(x => x.ParentId == category.Id))
+                                        {
+                                            <div class="col-lg-3">
+                                                <div class="category-single">
+                                                    <h6 class="category-title-text">@subCategory.Title</h6>
+                                                    <div class="category-link">
+                                                        @foreach (var secondSubCategory in productCategories.Where(x => x.ParentId == subCategory.Id))
+                                                        {
+                                                            <a href="#">‌‌@secondSubCategory.Title </a>
+
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+
+
+                                    </div>
+                                </div>
+                            </li>
+
+                        }
+
+
+                    </ul>
+                </div>
+*@                <div class="mobile-menu-right">
+                    <div class="search-btn">
+                        <button type="button" class="nav-right-link"><i class="far fa-search"></i></button>
+                        <div class="mobile-search-form">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="در اینجا جستجو کنید...">
+                                <button type="submit"><i class="far fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-mobile-icon"><i class="far fa-bars"></i></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="main_nav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/">صفحه اصلی</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about-us">درباره</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact-us">تماس</a></li>
+                        @foreach (var category in productCategories.Where(x => x.ParentId == null))
+                        {
+                            <li class="nav-item mega-menu dropdown">
+                                <a class="nav-link dropdown-toggle" asp-area="" asp-controller="Product" asp-action="FilterProduct" asp-route-Category="@category.UrlName" data-bs-toggle="dropdown">
+                                    @category.Title
+                                </a>
+                                <div class="dropdown-menu fade-down">
+                                    <div class="mega-content">
+                                        <div class="container-fluid px-lg-0">
+                                            <div class="row">
+                                                @foreach (var subCategory in productCategories.Where(x => x.ParentId == category.Id))
+                                                {
+                                                    <div class="col-12 col-lg-3">
+                                                        <h5 class="mega-menu-title"><a asp-area="" asp-controller="Product" asp-action="FilterProduct" asp-route-Category="@subCategory.UrlName" style="color:black;">@subCategory.Title</a></h5>
+                                                        <ul class="mega-menu-item">
+                                                            @foreach (var secondSubCategory in productCategories.Where(x => x.ParentId == subCategory.Id))
+                                                            {
+                                                                <li><a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="FilterProduct" asp-route-Category="@secondSubCategory.UrlName">@secondSubCategory.Title</a></li>
+                                                            }
+
+                                                        </ul>
+                                                    </div>
+                                                }
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        }
+                        <li class="nav-item"><a class="nav-link" href="tel:989351970147">درخواست تعمیر</a></li>
+
+                    </ul>
+                   @*  <div class="nav-right">
+                        <div class="nav-right-btn">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-area="User" asp-controller="Home" asp-action="DashBoard" class="theme-btn">ورود به پنل</a>
+
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="Login" class="theme-btn">ورود/ثبت نام</a>
+
+                            }
+                        </div>
+                    </div> *@
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+@*<header class="header-2">
+    <div class="mobile-fix-header">
+    </div>
+    <div class="container">
+        <div class="row header-content">
+            <div class="col-12">
+                <div class="content-header">
+                    <div class="left-section">
+                        <div class="header-top">
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()">
+                                    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
+                                </a>
+                                <div id="mySidenav" class="sidenav">
+                                    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+                                    <nav class="">
+                                        <div onclick="closeNav()">
+                                            <div class="sidebar-back text-end"><i class="fa fa-angle-right pe-2" aria-hidden="true"></i> برگشت</div>
+                                        </div>
+                                        <ul id="sub-menu" class="sm pixelstrap sm-vertical ">
+                                            @foreach (var category in productCategories.Where(x=>x.ParentId==null))
+                                            {
+                                                <li class="mega">
+                                                    <a href="#">@category.Title</a>
+                                                    <ul class="mega-menu vertical-mega-menu">
+
+                                                            <li>
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        @foreach (var subCategory in productCategories.Where(x => x.ParentId == category.Id))
+                                                                        {
+                                                                            <div class="col-xl-4 mega-box">
+                                                                                <div class="link-section">
+                                                                                    <div class="demo">
+                                                                                        <div class="menu-title">
+                                                                                            <h6>@subCategory.Title</h6>
+                                                                                        </div>
+                                                                                        <div class="menu-content">
+                                                                                            <ul>
+                                                                                                @foreach (var secondSubCategory in productCategories.Where(x => x.ParentId == subCategory.Id))
+                                                                                                {
+                                                                                                    <li><a target="_blank" href="#">@secondSubCategory.Title</a></li>
+                                                                                                }
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+
+                                                    </ul>
+                                                </li>
+
+                                            }
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="brand-logo">
+                                <a href="#"> <img src="~/images/layout-7-7.png" class="" alt=""></a>
+                            </div>
+                            <nav id="main-nav">
+                                <div class="toggle-nav">
+                                    <i class="ti-menu-alt"></i>
+                                </div>
+                                <ul id="main-menu" class="sm pixelstrap sm-horizontal rtl sm-rtl">
+                                    <li>
+                                        <div class="mobile-back text-end">
+                                            برگشت<i class="fa fa-angle-left ps-2" aria-hidden="true"></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">خانه</a>
+                                        <ul>
+                                            <li><a href="layout-2.html">فروشگاه مگا دو</a></li>
+                                            <li><a href="layout-3.html"> فروشگاه مگا سه</a></li>
+                                            <li><a href="layout-4.html">فروشگاه مگا چهار</a></li>
+                                            <li><a href="layout-5.html">فروشگاه لوازم بچه گانه</a></li>
+                                            <li><a href="layout-6.html">فروشگاه مبلمان و صندلی</a></li>
+                                            <li><a href="layout-7.html">فروشگاه الکترونیک</a></li>
+                                            <li><a href="layout-8.html">فروشگاه لوازم ورزشی</a></li>
+                                            <li><a href="layout-9.html">فروشگاه پوشاک</a></li>
+                                            <li><a href="layout-10.html"> فروشگاه لوازم آرایشی</a></li>
+                                            <li><a href="layout-11.html">فروشگاه ابزار </a></li>
+                                            <li><a href="layout-12.html">  فروشگاه میوه و سبزیجات</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="AboutUs">درباره ما</a>
+
+
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Contact" asp-action="Index">تماس با ما</a>
+
+
+                                    </li>
+                                    <li>
+                                        <a href="#">فروشگاه</a>
+                                        <ul>
+                                            <li><a href="category-page.html">نوار کناری سمت چپ</a></li>
+                                            <li><a href="category-page(right).html">نوار کناری سمت راست</a></li>
+                                            <li><a href="category-page(no-sidebar).html">بدون سایدبار</a></li>
+                                            <li><a href="category-page(sidebar-popup).html">پنجره کناری</a></li>
+                                            <li><a href="category-page(metro).html">مترو </a></li>
+                                            <li><a href="category-page(full-width).html">تمام عرض </a></li>
+                                            <li><a href="category-page(infinite-scroll).html">اسکرول بی نهایت</a></li>
+                                            <li><a href="category-page(3-grid).html">سه شبکه</a></li>
+                                            <li><a href="category-page(6-grid).html">شش شبکه</a></li>
+                                            <li><a href="category-page(list-view).html">نمای لیست</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="mega" id="hover-cls">
+                                        <a href="#">مگا منو</a>
+                                        <ul class="mega-menu feature-menu full-mega-menu">
+                                            <li>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-xl-2 mega-box">
+                                                            <div class="link-section">
+                                                                <div class="demo">
+                                                                    <div class="menu-title">
+                                                                        <h6>عناصر</h6>
+                                                                    </div>
+                                                                    <div class="menu-content">
+                                                                        <img src="~/images/1.jpg" class="mega-menu-img  img-fluid" alt="">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    تلفن های
+                                                                                    همراه
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">تلویزیون ها</a>
+                                                                            </li>
+                                                                            <li><a target="_blank" href="#">یخچال</a></li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    دستگاه های
+                                                                                    صوتی
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">تهویه مطبوع</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    لپ تاپ و
+                                                                                    کامپیوتر
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 mega-box">
+                                                            <div class="link-section">
+                                                                <div class="demo">
+                                                                    <div class="menu-title">
+                                                                        <h6>مد</h6>
+                                                                    </div>
+                                                                    <div class="menu-content">
+                                                                        <img src="~/images/2.jpg" class="mega-menu-img  img-fluid" alt="">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">لباس زنانه</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">لباس مردانه</a>
+                                                                            </li>
+                                                                            <li><a target="_blank" href="#">کفش</a></li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    تجهیزات
+                                                                                    جانبی
+                                                                                </a>
+                                                                            </li>
+                                                                            <li><a target="_blank" href="#">ساعت</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 mega-box">
+                                                            <div class="link-section">
+                                                                <div class="demo">
+                                                                    <div class="menu-title">
+                                                                        <h6>محصولات آریشی</h6>
+                                                                    </div>
+                                                                    <div class="menu-content">
+                                                                        <img src="~/images/3.jpg" class="mega-menu-img  img-fluid" alt="">
+                                                                        <ul>
+                                                                            <li><a target="_blank" href="#">زیبایی</a></li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">مراقبت شخصی</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">مراقبت طبیعی</a>
+                                                                            </li>
+                                                                            <li><a target="_blank" href="#">مردان</a></li>
+                                                                            <li><a target="_blank" href="#">دستگاه</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 mega-box">
+                                                            <div class="link-section">
+                                                                <div class="demo">
+                                                                    <div class="menu-title">
+                                                                        <h6>خانه و آشپزحانه</h6>
+                                                                    </div>
+                                                                    <div class="menu-content">
+                                                                        <img src="~/images/4.jpg" class="mega-menu-img  img-fluid" alt="">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    آشپزخانه و
+                                                                                    ناهارخوری
+                                                                                </a>
+                                                                            </li>
+                                                                            <li><a target="_blank" href="#">مبلمان</a></li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">هنر زیبا</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    انباری
+                                                                                    آشپزخانه
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">دکور خانه</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 mega-box">
+                                                            <div class="link-section">
+                                                                <div class="demo">
+                                                                    <div class="menu-title">
+                                                                        <h6>کتاب و فیلم</h6>
+                                                                    </div>
+                                                                    <div class="menu-content">
+                                                                        <img src="~/images/5.jpg" class="mega-menu-img  img-fluid" alt="">
+                                                                        <ul>
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <a target="_blank" href="#">همه کتاب</a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a target="_blank" href="#">
+                                                                                        کتاب های
+                                                                                        صوتی
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a target="_blank" href="#">همه فیلم ها</a>
+                                                                                </li>
+                                                                                <li><a target="_blank" href="#">موزیک</a></li>
+                                                                                <li>
+                                                                                    <a target="_blank" href="#">
+                                                                                        بازی های
+                                                                                        ویدیویی
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 mega-box">
+                                                            <div class="link-section">
+                                                                <div class="demo">
+                                                                    <div class="menu-title">
+                                                                        <h6>محصولات کودک</h6>
+                                                                    </div>
+                                                                    <div class="menu-content">
+                                                                        <img src="~/images/6.jpg" class="mega-menu-img  img-fluid" alt="">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    اسباب بازی و
+                                                                                    بازی
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">محصولات کودک</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">مد بچه ها</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    فروشگاه هدیه
+                                                                                    اسباب بازی
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a target="_blank" href="#">
+                                                                                    حمام و پوست
+                                                                                    نوزاد
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header-bottom">
+                            <div class="search-bar">
+                                <input id="ProductName" class="search__input" type="text" placeholder="جستجوی محصول">
+                                <div class="search-icon "></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        <div class="upper-section">
+                            <ul>
+                                <li><a href="#">پیگیری سفارش</a></li>
+                                <li><a href="#">تخفیفات</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="lower-section">
+                            <div class="nav-icon">
+                                <ul>
+                                    <li class="onhover-div setting-icon">
+                                        <div>
+                                            <img src="~/images/settings.png" class=" img-fluid setting-img" alt="">
+                                            <i class="ti-settings mobile-icon"></i>
+                                        </div>
+                                        <div class="show-div setting">
+
+                                        </div>
+                                    </li>
+                                    <li class="onhover-div pe-0 search-3">
+                                        <div onclick="openSearch()">
+                                            <i class="ti-search mobile-icon-search mobile-icon"></i>
+                                        </div>
+                                        <div id="search-overlay" class="search-overlay">
+                                            <div>
+                                                <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                                                <div class="overlay-content">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-xl-12">
+                                                                <form>
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="جستجوی محصول">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="onhover-div wishlist-icon" onclick="openWishlist()">
+                                        <img src="~/images/wishlist.png" alt="" class="wishlist-img">
+                                        <i class="ti-heart mobile-icon"></i>
+                                        <div class="wishlist icon-detail">
+                                            <h6 class="up-cls"><span>۳ آیتم</span></h6>
+                                            <h6><a href="#">لیست علاقه</a></h6>
+                                        </div>
+                                    </li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li class="onhover-div user-icon">
+                                            <img src="~/images/user.png" alt="" class="user-img">
+                                            <i class="ti-user mobile-icon"></i>
+                                            <div class="wishlist icon-detail">
+                                                <h6 class="up-cls"><span>@User.Identity.Name</span></h6>
+                                                <h6><a asp-area="User" asp-controller="Home" asp-action="DashBoard">ورود به پنل کاربری</a></h6>
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="onhover-div user-icon">
+                                            <img src="~/images/user.png" alt="" class="user-img">
+                                            <i class="ti-user mobile-icon"></i>
+                                            <div class="wishlist icon-detail">
+                                                <h6 class="up-cls"><span>حساب من</span></h6>
+                                                <h6><a asp-controller="Account" asp-action="Login">ورود/ثبت نام</a></h6>
+                                            </div>
+                                        </li>
+                                    }
+
+                                    <li class="onhover-div cart-icon" onclick="openCart()">
+                                        <img src="~/images/layout-7-cart.png" alt="" class="cart-image">
+                                        <i class="ti-shopping-cart mobile-icon"></i>
+                                        <div class="cart  icon-detail">
+                                            <h6 class="up-cls"><span>۳ آیتم</span></h6>
+                                            <h6><a href="#">حساب من</a></h6>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+*@

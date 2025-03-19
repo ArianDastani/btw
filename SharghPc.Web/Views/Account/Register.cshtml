@@ -1,0 +1,101 @@
+﻿@using SharghPc.DataLayer.DTOs.Account;
+@{
+    ViewData["Title"] = "ثبت نام |";
+    ViewData["description"] = "فروشگاه خدمات کامپیوتر شرق ارائه دهنده انواع لوازم جانبی لپ تاپ کامپیوتر و گوشی های موبایل از برند های معتبر و همچنین ارائه دهنده تمامی خدمات تعمیرات سخت افزار و نرم افزار مربوط به لپ تاپ و کامپیوتر";
+    ViewData["keywords1"] = "sharghpc";
+    ViewData["keywords2"] = "خدمات کامپیوتر شرق";
+    ViewData["keywords3"] = "ثبت نام در خدمات کامپیوتر شرق";
+    ViewData["keywords4"] = "شرق پی سی";
+    ViewData["og:title"] = "خدمات کامپیوتر شرق";
+    ViewData["og:description"] = "فروشگاه خدمات کامپیوتر شرق ارائه دهنده انواع لوازم جانبی لپ تاپ کامپیوتر و گوشی های موبایل از برند های معتبر و همچنین ارائه دهنده تمامی خدمات تعمیرات سخت افزار و نرم افزار مربوط به لپ تاپ و کامپیوتر";
+    ViewData["twitter:title"] = "خدمات کامپیوتر شرق";
+    ViewData["twitter:description"] = "فروشگاه خدمات کامپیوتر شرق ارائه دهنده انواع لوازم جانبی لپ تاپ کامپیوتر و گوشی های موبایل از برند های معتبر و همچنین ارائه دهنده تمامی خدمات تعمیرات سخت افزار و نرم افزار مربوط به لپ تاپ و کامپیوتر";
+
+}
+@model RegisterUserDTO
+
+
+<main class="main">
+
+    <div class="site-breadcrumb">
+        <div class="site-breadcrumb-bg" style="background: url(assets/img/breadcrumb/01.jpg)"></div>
+        <div class="container">
+            <div class="site-breadcrumb-wrap">
+                <h4 class="breadcrumb-title">ثبت نام</h4>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/"><i class="far fa-home"></i> صفحه اصلی</a></li>
+                    <li class="active">ثبت نام</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="login-area py-100">
+        <div class="container">
+            <div class="col-md-12 mx-auto">
+                <div class="login-form">
+                    <div class="login-header">
+                        <img src="~/logo2.png" alt="">
+                        <p>حساب خود را رایگان ایجاد کنید</p>
+                    </div>
+                    <form asp-controller="Account" asp-action="register" method="post" class="theme-form">
+                        <input type="hidden" asp-for="Captcha" id="captchaInput" />
+
+                        <div class="form-group">
+                            <label>نام </label>
+                            <input asp-for="FirstName" type="text" class="form-control" placeholder="نام شما">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>نام خانوادگی </label>
+                            <input type="text" asp-for="LastName" class="form-control" placeholder="نام شما">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>شماره همراه</label>
+                            <input type="number" asp-for="Mobile" class="form-control" placeholder=" شماره همراه">
+                            <span asp-validation-for="Mobile" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>رمز عبور</label>
+                            <input type="password" asp-for="Password" class="form-control" placeholder="گذرواژه شما">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>تکرار رمز عبور</label>
+                            <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="گذرواژه شما">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-check form-group">
+                            <input class="form-check-input" type="checkbox" value="" id="agree">
+                            <label class="form-check-label" for="agree">
+                                من با <a href="#">شرایط خدمات</a> موافقم
+                            </label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="theme-btn"><i class="far fa-paper-plane"></i> ثبت نام</button>
+                        </div>
+                    </form>
+                    <div class="login-footer">
+                        <p>از قبل حساب کاربری دارید؟ <a asp-controller="Account" asp-action="Login">ورود شوید.</a></p>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+   
+
+</main>
+@section Scripts
+{
+    <partial name="_CaptchaScripts"/>
+}

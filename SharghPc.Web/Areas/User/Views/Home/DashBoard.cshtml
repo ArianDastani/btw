@@ -1,0 +1,68 @@
+﻿@model List<SharghPc.DataLayer.Entites.ProductOrder.Order>
+@using SharghPc.Web.PresentationExtensions
+@using RavistekTicket.Peresentation.PresentationExtensions
+<main class="main">
+    <div class="user-area bg" style="padding:30px 0;">
+        <div class="container">
+            <div class="row">
+                <partial name="_MenuDashboard" />
+
+                <div class="col-lg-9">
+                    <div class="user-wrapper">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="user-card">
+                                    <div class="user-card-header">
+                                        <h4 class="user-card-title">سفارشات اخیر</h4>
+
+                                    </div>
+                                    @if (Model == null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless text-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>شماره سفارش</th>
+                                                        <th>تاریخ خرید</th>
+                                                        <th>مجموع</th>
+                                                        <th>وضعیت</th>
+                                                        <th>عمل</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td><span class="table-list-code">#@item.Id</span></td>
+                                                            <td>@PersianDate.ToShamsiDate(item.CreateDate.Value)</td>
+                                                            <td>@item.OrderDetails.Sum(x => x.ProductPrice*x.Count).ToString("n0") تومان</td>
+                                                            <td><span class="badge badge-info">@item.OrderState.GetEnumName()</span></td>
+                                                            <td>
+                                                                <a asp-area="User" asp-controller="Home" asp-action="GetOrder" asp-route-Id="@item.Id"
+                                                                   class="btn btn-outline-secondary btn-sm rounded-2"
+                                                                   data-tooltip="tooltip" title="جزئیات"><i class="far fa-eye"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

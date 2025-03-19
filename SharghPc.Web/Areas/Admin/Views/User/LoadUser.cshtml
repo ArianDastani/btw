@@ -1,0 +1,110 @@
+﻿@model SharghPc.Application.Services.user.AddOrEditUserDto
+
+@{
+    ViewData["Title"] = "افزودن کاربر";
+}
+
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">افزودن محصول</h3>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                            <div class="nk-block-head-content">
+                                <div class="toggle-wrap nk-block-tools-toggle">
+                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+
+                                </div>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                        </div>
+                        <!-- .nk-block-between -->
+                    </div>
+                    <!-- .nk-block-head -->
+                    <div class="nk-block nk-block-lg">
+                        <div class="nk-block-head">
+                        </div>
+                        <div class="card">
+                            <div class="card-inner">
+                                <form asp-area="Admin" asp-controller="User" asp-action="AddOrEditUser" enctype="multipart/form-data" id="product_form" class="form-validate">
+                                    <div class="row g-gs">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input asp-for="UserId" type="hidden"/>
+                                                <label asp-for="FirstName" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="FirstName" required />
+                                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="LastName" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="LastName" required />
+                                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Mobile" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Mobile" required />
+                                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">نقش</label>
+                                                <div class="form-control-wrap">
+                                                    <select class="form-control" asp-for="RoleId" required>
+                                                        <option value="1">ادمین</option>
+                                                        <option value="4">مشتری</option>
+                                                    </select>
+                                                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if (Model.UserId == 0)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="Password" class="form-label"></label>
+                                                    <div class="form-control-wrap">
+                                                        <input type="text" class="form-control" asp-for="Password" required />
+                                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary">ذخیره</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .nk-block -->
+                    <!-- .nk-block -->
+                </div>
+                <!-- .components-preview -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

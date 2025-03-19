@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = @Model.Title;
+    ViewData["description"] = @Model.Description;
+    ViewData["keywords1"] = "sharghpc";
+    ViewData["keywords2"] = "خدمات کامپیوتر شرق";
+    ViewData["keywords3"] = @Model.Title;
+    ViewData["keywords4"] = "شرق پی سی";
+    ViewData["og:title"] = "خدمات کامپیوتر شرق|"+Model.Title;
+    ViewData["og:description"] = @Model.Description;
+    ViewData["twitter:title"] = @Model.Title;
+    ViewData["twitter:description"] = @Model.Description;
+
+}
+@using SharghPc.DataLayer.DTOs.Cart
+@model SharghPc.DataLayer.DTOs.Product.ProductDetailDto
+
+<partial name="_AddProductToCartPartial" model="@(new AddProductToCartDto(){Count=1,ProductId=Model.Id})" />
+
+
+<main class="main">
+
+    <div class="site-breadcrumb">
+        <div class="site-breadcrumb-bg" style="background: url(/images/main-bannerw-bg.jpg)"></div>
+        <div class="container">
+            <div class="site-breadcrumb-wrap">
+                <h4 class="breadcrumb-title"> @Model.Title </h4>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/"><i class="far fa-home"></i> صفحه اصلی</a></li>
+                    <li class="active">خرید محصول </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br/>
+
+    <div class="shop-single2 bg py-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-lg-6 col-xxl-5">
+                    <div class="shop-single-gallery" dir="ltr">
+
+                        <div class="flexslider-thumbnails">
+                            <ul class="slides">
+                                <li data-thumb="/content/productimgae/@Model.ImageName" rel="adjustX:10, adjustY:">
+                                    <img src="~/content/productimgae/@Model.ImageName" alt="#">
+                                </li>
+                                @foreach (var image in Model.ProductGalleries)
+                                {
+                                    <li data-thumb="/content/productimgaeGallry/@Model.Id/@image.ImageName">
+                                        <img src="~/content/productimgaeGallry/@Model.Id/@image.ImageName" alt="#">
+                                    </li>
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 col-xxl-6">
+                    <div class="shop-single-info">
+                        <h4 class="shop-single-title">@Model.Title</h4>
+
+                        <div class="shop-single-price">
+
+                            <span class="amount">@Model.Price.ToString("n0") تومان</span>
+                            @*<span class="discount-percentage">30% تخفیف</span>*@
+                        </div>
+                        <p class="mb-3">
+                            @Model.ShortDescription
+                        </p>
+                        <div class="shop-single-cs">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-4 col-xl-3">
+                                    @*  <div class="shop-single-size">
+                                    <h6>مقدار</h6>
+                                    <div class="shop-cart-qty">
+                                    <button class="minus-btn"><i class="fal fa-minus"></i></button>
+                                    <input class="quantity" type="text" value="1" disabled>
+                                    <button class="plus-btn"><i class="fal fa-plus"></i></button>
+                                    </div>
+                                    </div>*@
+                                </div>
+                                @* <div class="col-md-3 col-lg-4 col-xl-3">
+                                <div class="shop-single-size">
+                                <h6>اندازه</h6>
+                                <select class="select">
+                                <option value> انتخاب کنید</option>
+                                <option value="1">بسیار کوچک</option>
+                                <option value="2">کوچک</option>
+                                <option value="3">متوسط</option>
+                                <option value="4">بسیار بزرگ</option>
+                                </select>
+                                </div>
+                                </div>*@
+                            </div>
+                        </div>
+                        <div class="shop-single-sortinfo">
+                            <ul>
+                                @foreach (var productFeatrue in Model.ProductFeatures)
+                                {
+                                    <li style="color:black;">@productFeatrue.FeatureTitle: <span style="color:gray;">@productFeatrue.FeatureValue</span></li>
+                                }
+
+                            </ul>
+                        </div>
+                        <div class="shop-single-action">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 col-lg-12 col-xl-6">
+                                    <div class="shop-single-btn">
+                                        <a id="submit_product_to_Oders" class="theme-btn">
+                                            <span class="far fa-shopping-bag"></span>افزودن به
+                                            سبد خرید
+                                        </a>
+                                        <a href="#" class="theme-btn theme-btn2" data-tooltip="tooltip"
+                                           title="اضافه کردن به علاقه مندی ها">
+                                            <span class="far fa-heart"></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-12 col-xl-6">
+                                    <div class="shop-single-share">
+                                        <span>اشتراک گذاری:</span>
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-single-details">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-tab1" data-bs-toggle="tab" data-bs-target="#tab1"
+                                type="button" role="tab" aria-controls="tab1" aria-selected="true">
+                            توضیحات
+                        </button>
+
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="nav-tab1">
+                        <div class="shop-single-desc">
+                            <p style="text-align:justify;line-height:45px;">
+                                @Model.Description
+                            </p>
+
+                            <div class="row">
+
+                                <div class="col-lg-6 col-xl-5">
+                                    <div class="shop-single-list">
+                                        <h5 class="title">مشخصات</h5>
+                                        <ul>
+                                            @foreach (var productFeatrue in Model.ProductFeatures)
+                                            {
+                                                <li>@productFeatrue.FeatureTitle : <span>@productFeatrue.FeatureValue</span></li>
+
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="product-area related-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="site-heading-inline">
+                                <h2 class="site-title">موارد مرتبط</h2>
+                                <a href="#">مشاهده بیشتر <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @if (Model.RelatedProduct != null)
+                        {
+                            @foreach (var item in Model.RelatedProduct)
+                            {
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="product-item">
+                                        <div class="product-img">
+                                            <span class="type new">جدید</span>
+                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"><img src="~/content/productimgae/@item.ImageName" alt></a>
+
+                                        </div>
+                                        <div class="product-content">
+                                            <h3 class="product-title"><a asp-controller="Product" asp-action="ProductDetail" asp-route-id="@item.Id"> @item.Title</a></h3>
+
+                                            <div class="product-bottom">
+                                                <div class="product-price">
+                                                    <span>تومان @item.Price.ToString("n0") </span>
+                                                </div>
+                                                <button onclick="addProductToOrderList('@item.Id')" type="button" class="product-cart-btn" data-bs-placement="right"
+                                                        data-tooltip="tooltip" title="افزودن به سبد خرید">
+                                                    <i class="far fa-shopping-bag"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</main>
+
+
+<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/assets/css/all-fontawesome.min.css">
+<link rel="stylesheet" href="~/assets/css/animate.min.css">
+<link rel="stylesheet" href="~/assets/css/magnific-popup.min.css">
+<link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="~/assets/css/jquery-ui.min.css">
+<link rel="stylesheet" href="~/assets/css/nice-select.min.css">
+<link rel="stylesheet" href="~/assets/css/flex-slider.min.css">
+<link rel="stylesheet" href="~/assets/css/style.css">
+
+
+@section Scripts
+{
+    <script src="~/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/modernizr.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.appear.min.js"></script>
+    <script src="~/assets/js/jquery.easing.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/counter-up.js"></script>
+    <script src="~/assets/js/jquery-ui.min.js"></script>
+    <script src="~/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/js/countdown.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/flex-slider.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.ajax.min.js"></script>
+}
+<!-- product section end -->

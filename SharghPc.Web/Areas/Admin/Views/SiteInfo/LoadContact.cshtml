@@ -1,0 +1,93 @@
+﻿@using SharghPc.DataLayer.DTOs.Contact
+@model SharghPc.DataLayer.DTOs.Contact.LoadContactDto
+
+@{
+    ViewData["Title"] = "افزودن ";
+}
+
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">افزودن مقدار</h3>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                            <div class="nk-block-head-content">
+                                <div class="toggle-wrap nk-block-tools-toggle">
+                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+
+                                </div>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                        </div>
+                        <!-- .nk-block-between -->
+                    </div>
+                    <!-- .nk-block-head -->
+                    <div class="nk-block nk-block-lg">
+                        <div class="nk-block-head">
+                        </div>
+                        <div class="card">
+                            <div class="card-inner">
+                                <form asp-area="Admin" asp-controller="SiteInfo" asp-action="AddOrEditConatct" enctype="multipart/form-data" class="form-validate">
+                                    <div class="row g-gs">
+                                        <input type="hidden" asp-for="Id"/>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">نام ویژگی</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Title"/>
+                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">مقدار ویژگی</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Value" required/>
+                                                    <span asp-validation-for="Value" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">لینک</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Link"/>
+                                                    <span asp-validation-for="Link" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">نوع</label>
+                                                <div class="form-control-wrap">
+                                                    <select class="form-control" asp-items="@(Html.GetEnumSelectList<ContactTypeId>())" asp-for="ContactTypeId" required></select>
+                                                    <span asp-validation-for="ContactTypeId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary">ذخیره </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .nk-block -->
+                    <!-- .nk-block -->
+                </div>
+                <!-- .components-preview -->
+            </div>
+        </div>
+    </div>
+</div>

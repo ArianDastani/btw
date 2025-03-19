@@ -1,0 +1,170 @@
+﻿@model List<SharghPc.DataLayer.DTOs.Contact.GetContatsDtoForSiteDto>
+<br/>
+<footer class="footer-area">
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row footer-widget-wrapper pt-50 pb-50">
+
+                <div class="col-md-12 col-lg-12">
+                    <div class="footer-widget-box about-us">
+                        <a href="#" class="footer-logo">
+                            <img src="~/logo-white2.png" alt>
+                        </a>
+                        <p class="mb-2">
+                            @Model.FirstOrDefault(x => x.ContactTypeId == 4).Value.ToString()
+                        </p>
+                     @*    <div class="footer-call mb-1">
+                            <div class="footer-call-icon">
+                                <i class="fal fa-headset"></i>
+                            </div>
+                            <div class="footer-call-info">
+                                <p> به کمک نیاز دارید؟</p>
+                                <a href="tel:@Model.FirstOrDefault(x => x.ContactTypeId == 1).Value.ToString()">@Model.FirstOrDefault(x => x.ContactTypeId == 1).Value.ToString()</a>
+                            </div>
+                        </div>
+                        <ul class="footer-contact">
+
+                            <li style="text-align:justify;">
+                                <i style="background:#f6cb03;" class="far fa-map-marker-alt"></i>
+                                @Model.FirstOrDefault(x => x.ContactTypeId == 8).Value.ToString()
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <span class="__cf_email__">@Model.FirstOrDefault(x => x.ContactTypeId == 3).Value.ToString()</span>
+                                </a>
+                            </li>
+                            <li>@Model.FirstOrDefault(x => x.ContactTypeId == 12).Value.ToString()</li>
+                        </ul> *@
+                    </div>
+                </div>
+
+                <hr/>
+                <div class="col-md-12 col-lg-12">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title">تماس بگیرید</h4>
+                        <p>از امروز با ما در تماس باشید. ما آماده کمک به شما هستیم.</p>
+                        <ul class="footer-contact">
+                            <li class="footer-call-info a">
+                                <i class="far fa-phone"></i>
+                                شماره تماس : 
+                                <a style="color:#fba707;" href="tel:@Model.FirstOrDefault(x => x.ContactTypeId == 1).Value.ToString()"> @Model.FirstOrDefault(x => x.ContactTypeId == 1).Value.ToString() </a>
+                            </li>
+                            <li>
+                                <i class="far fa-map-marker-alt"></i>
+                                @Model.FirstOrDefault(x => x.ContactTypeId == 8).Value.ToString()
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="far fa-envelope"></i>                                    <span class="__cf_email__">@Model.FirstOrDefault(x => x.ContactTypeId == 3).Value.ToString()</span>
+                                </a>
+                            </li>
+                            <li>
+                                <i class="far fa-clock"></i>
+                                @Model.FirstOrDefault(x => x.ContactTypeId == 12).Value.ToString()
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <hr/>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title">پیوندهای سریع</h4>
+                        <ul class="footer-list">
+                            @foreach (var item in Model.Where(x => x.ContactTypeId == 10))
+                            {
+                                <li><a href="@item.Link"> @item.Value</a></li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title">مرکز پشتیبانی</h4>
+                        <ul class="footer-list">
+                            @foreach (var item in Model.Where(x => x.ContactTypeId == 13))
+                            {
+                                <li><a href="@item.Link">@item.Value </a></li>
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title">نماد ها</h4>
+                        <p>نماد های ما جهت اعتماد سازی برای شما مشتریان عزیز.</p>
+
+                        <div class="footer-download mt-30">
+                            <h5>نمادها</h5>
+                            @*  <div class="footer-download-btn">
+                            <a href="#">
+                            <i class="fab fa-google-play"></i>
+                            <div class="download-btn-info">
+                            <span>   </span>
+                            <h6> </h6>
+                            </div>
+                            </a>
+                            <a href="#">
+                            <i class="fab fa-app-store"></i>
+                            <div class="download-btn-info">
+                            <span>   </span>
+                            <h6> </h6>
+                            </div>
+                            </a>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="col-12">
+                    <div class="footer-top-link">
+                        <h5>پیوندهای برتر</h5>
+                        <div class="footer-top-link-info">
+                            @foreach (var item in Model.Where(x => x.ContactTypeId == 11))
+                            {
+                                <a asp-controller="Product" asp-action="FilterProduct" asp-route-Category="@item.Link">@item.Value</a>
+                            }
+                            <a asp-controller="Account" asp-action="LogOut">خروج</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="copyright-wrap">
+                <div class="row">
+                    @*<div class="col-12 col-lg-4 align-self-center">
+                    <div class="footer-payment">
+                    <span>می پذیریم:</span>
+                    <img src="~/assets/img/payment/visa.svg" alt>
+                    <img src="~/assets/img/payment/mastercard.svg" alt>
+                    <img src="~/assets/img/payment/amex.svg" alt>
+                    <img src="~/assets/img/payment/discover.svg" alt>
+                    <img src="~/assets/img/payment/paypal.svg" alt>
+                    </div>
+                    </div>*@
+                    <div class="col-12 col-lg-4 align-self-center">
+                        <p class="copyright-text">
+                            <span id="date"></span> @Model.FirstOrDefault(x => x.ContactTypeId == 6).Value.ToString()
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-4 align-self-center">
+                        <div class="footer-social">
+                            <span>ما را دنبال کنید:</span>
+                            <a href="https://instagram.com/sharghpc.ir"><i class="fab fa-instagram"></i></a>
+                            <a href="whatsapp://send?phone=989351970147"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

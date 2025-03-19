@@ -1,0 +1,292 @@
+﻿@using RavistekTicket.Peresentation.PresentationExtensions
+@model SharghPc.Application.Services.Site.AdminViewModels
+
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block-head nk-block-head-sm">
+                    <div class="nk-block-between">
+                        <div class="nk-block-head-content">
+                            <h3 class="nk-block-title page-title">داشبورد</h3>
+                        </div>
+                        <!-- .nk-block-head-content -->
+                        <div class="nk-block-head-content">
+                            <div class="toggle-wrap nk-block-tools-toggle">
+                                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                <div class="toggle-expand-content" data-content="pageMenu">
+                                    <ul class="nk-block-tools g-3">
+                                        <li>
+                                            <div class="drodown">
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .nk-block-head-content -->
+                    </div>
+                    <!-- .nk-block-between -->
+                </div>
+                <!-- .nk-block-head -->
+                <div class="nk-block">
+                    <div class="row g-gs">
+                        <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">سفارشات </h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">@Model.TotalOrder</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayOrders"></canvas>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- .card-inner -->
+                                </div>
+                                <!-- .nk-ecwg -->
+                            </div>
+                            <!-- .card -->
+                        </div>
+                        <!-- .col -->
+                        <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title"> مشتریان</h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div style="font-size: 26.5px" class="amount">@Model.TotalCustomer </div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayRevenue"></canvas>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- .card-inner -->
+                                </div>
+                                <!-- .nk-ecwg -->
+                            </div>
+                            <!-- .card -->
+                        </div>
+                        <!-- .col -->
+                        <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">دسته بندی</h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">@Model.TotalCategory</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayCustomers"></canvas>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- .card-inner -->
+                                </div>
+                                <!-- .nk-ecwg -->
+                            </div>
+                            <!-- .card -->
+                        </div>
+                        <!-- .col -->
+                        <div class="col-xxl-3 col-sm-6">
+                            <div class="card">
+                                <div class="nk-ecwg nk-ecwg6">
+                                    <div class="card-inner">
+                                        <div class="card-title-group">
+                                            <div class="card-title">
+                                                <h6 class="title">بازدیدکنندگان </h6>
+                                            </div>
+                                        </div>
+                                        <div class="data">
+                                            <div class="data-group">
+                                                <div class="amount">@Model.TotalVisit</div>
+                                                <div class="nk-ecwg6-ck">
+                                                    <canvas class="ecommerce-line-chart-s3" id="todayVisitors"></canvas>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- .card-inner -->
+                                </div>
+                                <!-- .nk-ecwg -->
+                            </div>
+                            <!-- .card -->
+                        </div>
+                        <!-- .col -->
+                        <!-- .col -->
+                        <div class="col-xxl-6 col-md-8 col-lg-6">
+                            <div class="nk-block nk-block-lg">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-head-content">
+                                        <h4 class="title nk-block-title">ارسال پیام خوش آمدگویی</h4>
+                                       
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-inner">
+                                        <form asp-area="Admin" asp-controller="Home" asp-action="SendWellcomSms" class="form-validate">
+                                            <div class="row g-gs">
+                                              
+                                             
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="fv-phone">شماره همراه</label>
+                                                        <div class="form-control-wrap">
+                                                            <div class="input-group">
+                                                                <input name="number" type="number" class="form-control" required />
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text" id="fv-phone">98+</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-lg btn-primary">ذخیره و ارسال</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12">
+                            <div class="card card-full">
+                                <div class="card-inner">
+                                    <div class="card-title-group">
+                                        <div class="card-title">
+                                            <h6 class="title">سفارشات اخیر</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nk-tb-list mt-n2">
+                                    <div class="nk-tb-item nk-tb-head">
+                                        <div class="nk-tb-col">
+                                            <span>شماره سفارش</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-sm">
+                                            <span>مشتری</span>
+                                        </div>
+                                        <div class="nk-tb-col tb-col-md">
+                                            <span>تاریخ</span>
+                                        </div>
+                                        <div class="nk-tb-col"><span>مبلغ</span></div>
+                                        <div class="nk-tb-col">
+                                            <span class="d-none d-sm-inline">وضعیت</span>
+                                        </div>
+                                    </div>
+                                    @if (Model.LastOrders != null)
+                                    {
+                                        @foreach (var item in Model.LastOrders)
+                                        {
+                                            <div class="nk-tb-item">
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-lead"><a href="#">#@item.Id</a></span>
+                                                </div>
+                                                <div class="nk-tb-col tb-col-sm">
+                                                    <div class="user-card">
+                                                        <div class="user-avatar sm bg-purple-dim">
+                                                            <span>ف‌ت</span>
+                                                        </div>
+                                                        <div class="user-name">
+                                                            <span class="tb-lead">@item.User.LastName</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="nk-tb-col tb-col-md">
+                                                    <span class="tb-sub">1402/08/21</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-sub tb-amount">@item.RequestPay.Amount.ToString("n0") <span>تومان</span></span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="badge badge-dot badge-dot-xs bg-success">@item.OrderState.GetEnumName()</span>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+
+                                </div>
+                            </div>
+                            <!-- .card -->
+                        </div>
+
+                        <div class="col-xxl-12 col-md-8 col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-inner">
+                                    <div class="card-title-group mb-2">
+                                        <div class="card-title">
+                                            <h6 class="title">محصولات برتر</h6>
+                                        </div>
+                                        <div class="card-tools">
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle link link-light link-sm dropdown-indicator" data-bs-toggle="dropdown">هفتگی</a>
+                                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="nk-top-products">
+                                        @if (Model.TopProducts != null)
+                                        {
+                                            @foreach (var item in Model.TopProducts)
+                                            {
+                                                <li class="item">
+                                                    <div class="thumb">
+                                                        <img src="~/content/productimgae/@item.ImageName" alt="@item.Title" />
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="title">@item.Title</div>
+                                                        <div class="price">@item.Price.ToString("n0") تومان</div>
+                                                    </div>
+                                                    @* <div class="total">
+                                            <div class="count">10 عدد فروخته شده</div>
+                                            </div> *@
+                                                </li>
+
+                                            }
+                                        }
+
+                                    </ul>
+                                </div>
+                                <!-- .card-inner -->
+                            </div>
+                            <!-- .card -->
+                        </div>
+                        <!-- .col -->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+</div>
+

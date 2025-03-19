@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <partial name="_MetaTag"/>
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/all-fontawesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link href="~/notifications.css" rel="stylesheet" />
+
+</head>
+<body class="home-3">
+
+    @*<div class="preloader">
+    <div class="loader-ripple">
+    <div></div>
+    <div></div>
+    </div>
+    </div>*@
+
+<!-- header part start -->
+
+    @await Component.InvokeAsync("SiteHeader")
+<!-- header part end -->
+    @RenderBody()
+
+
+
+<!-- footer section start -->
+    @await Component.InvokeAsync("SiteFooter")
+
+
+
+
+    <a href="#" id="scroll-top"><i class="far fa-arrow-up-from-arc"></i></a>
+
+
+
+
+    <script src="~/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/modernizr.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.appear.min.js"></script>
+    <script src="~/assets/js/jquery.easing.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/counter-up.js"></script>
+    <script src="~/assets/js/jquery-ui.min.js"></script>
+    <script src="~/assets/js/jquery.nice-select.min.js"></script>
+    <script src="~/assets/js/countdown.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+<script src="~/assets/js/main.js"></script>
+<script src="~/notifications.js"></script>
+<script src="~/custom.js"></script>
+<!-- modal js-->
+<script src="~/js/modal.js"></script>
+<partial name="_GoftinoScripts" />
+<script src="~/lib/easyautocomplete/jquery.easy-autocomplete.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+<partial name="_SiteMessages" />
+
+<script>
+        // var options = {
+        //     url: function (phrase) {
+        //         return "/product-json?productName=" + phrase;
+        //     },
+        //     getValue: function (element) {
+        //         return element.title;
+        //     },
+        //     list: {
+        //         match: {
+        //             enabled: true
+        //         },
+        //         onSelectItemEvent: function () {
+        //             var value = $("#ProductName").getSelectedItemData().id;
+
+        //             $("#ProductId").val(value).trigger("change");
+        //         }
+        //     },
+        //     theme: "square"
+        // };
+
+        $("#ProductName").easyAutocomplete(options);
+    </script>
+</body>
+</html>

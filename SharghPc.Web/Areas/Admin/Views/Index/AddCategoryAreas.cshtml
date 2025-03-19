@@ -1,0 +1,78 @@
+﻿@model SharghPc.DataLayer.DTOs.Index.AddIndexCategoryAreaDto
+
+<div class="nk-content">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="components-preview">
+                    <div class="nk-block-head nk-block-head-sm">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <h3 class="nk-block-title page-title">افزودن دسته بندی</h3>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                            <div class="nk-block-head-content">
+                                <div class="toggle-wrap nk-block-tools-toggle">
+                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+
+                                </div>
+                            </div>
+                            <!-- .nk-block-head-content -->
+                        </div>
+                        <!-- .nk-block-between -->
+                    </div>
+                    <!-- .nk-block-head -->
+                    <div class="nk-block nk-block-lg">
+                        <div class="nk-block-head">
+                        </div>
+                        <div class="card">
+                            <div class="card-inner">
+                                <form asp-area="Admin" asp-controller="Index" asp-action="AddCategoryAreas" enctype="multipart/form-data" id="product_form" class="form-validate">
+                                    <div class="row g-gs">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="Title" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="Title" required />
+                                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="UrlName" class="form-label"></label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" class="form-control" asp-for="UrlName" required />
+                                                    <span asp-validation-for="UrlName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">تصویر اصلی محصول</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-icon form-icon-right">
+                                                        <em class="icon ni ni-image"></em>
+                                                    </div>
+                                                    <input name="image" type="file" accept=".jpg,.jpeg,.png" class="form-control" name="image" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-lg btn-primary">ذخیره محصول</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .nk-block -->
+                    <!-- .nk-block -->
+                </div>
+                <!-- .components-preview -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,176 @@
+﻿<div class="nk-sidebar nk-sidebar-fixed is-light" data-content="sidebarMenu">
+    <div class="nk-sidebar-element nk-sidebar-head">
+        <div class="nk-sidebar-brand">
+            <a href="/" class="logo-link nk-sidebar-logo">
+                <img class="logo-light logo-img" src="~/favicon - Copy.png" alt="لوگو" />
+                <img class="logo-dark logo-img" src="~/favicon - Copy.png" alt="لوگوی تاریک" />
+                <img class="logo-small logo-img logo-img-small" src="~/favicon - Copy.png" alt="لوگوی کوچک" />
+            </a>
+        </div>
+        <div class="nk-menu-trigger me-n2">
+            <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
+            <a href="#" class="nk-nav-compact nk-quick-nav-icon d-none d-xl-inline-flex" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
+        </div>
+    </div>
+    <!-- .nk-sidebar-element -->
+    <div class="nk-sidebar-element">
+        <div class="nk-sidebar-content">
+            <div class="nk-sidebar-menu" data-simplebar>
+                <ul class="nk-menu">
+                    <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">
+                            موارد اصلی
+                        </h6>
+                    </li>
+                    <!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
+                        <a href="/admin" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
+                            <span class="nk-menu-text">صفحه اصلی</span><span class="nk-menu-badge">داغ</span>
+                        </a>
+                    </li>
+
+                    <!-- .nk-menu-item -->
+                    <!-- .nk-menu-item -->
+                
+
+                    <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">کامپوننت ها</h6>
+                    </li>
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                            <span class="nk-menu-text">صفحه اصلی</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="Index" asp-action="IndesCategoryAreas" class="nk-menu-link"><span class="nk-menu-text">بخش دسته بندی ها</span></a>
+                            </li>
+
+                        </ul>
+                        <!-- .nk-menu-sub -->
+                    </li>
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
+                            <span class="nk-menu-text">اطلاعات پایه</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="SiteInfo" asp-action="LoadContact" asp-route-Id="0" class="nk-menu-link"><span class="nk-menu-text">افزودن اطلاعات اصلی</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="SiteInfo" asp-action="Index" class="nk-menu-link"><span class="nk-menu-text"> لیست مقادیر اطلاعات</span></a>
+                            </li>
+
+                        </ul>
+                        <!-- .nk-menu-sub -->
+                    </li>
+                    <li class="nk-menu-heading">
+                        <h6 class="overline-title text-primary-alt">بخش های مدیریتی</h6>
+                    </li>
+
+                    <!-- .nk-menu-heading -->
+                    <!-- .nk-menu-item -->
+                    <!-- .nk-menu-item -->
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>
+                            <span class="nk-menu-text">مشتریان</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="User" asp-action="Index" class="nk-menu-link"><span class="nk-menu-text">لیست مشتریان</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="User" asp-action="LoadUser" asp-route-UserId="0" class="nk-menu-link"><span class="nk-menu-text">افزودن مشتری جدید</span></a>
+                            </li>
+                        </ul>
+                        <!-- .nk-menu-sub -->
+                    </li>
+                    <!-- .nk-menu-item -->
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
+                            <span class="nk-menu-text">سفارشات</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="/Admin/Order/index?orderState=Processing" class="nk-menu-link"><span class="nk-menu-text"> سفارشات در حال پردازش</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="/Admin/Order/index?orderState=Canceled" class="nk-menu-link"><span class="nk-menu-text"> سفارشات لغو شده</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="/Admin/Order/index?orderState=Delivered" class="nk-menu-link"><span class="nk-menu-text"> سفارشات تحویل داده شده</span></a>
+                            </li>
+                        </ul>
+                        <!-- .nk-menu-sub -->
+                    </li>
+                    <!-- .nk-menu-item -->
+                    @*  <li class="nk-menu-item has-sub">
+                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                    <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                    <span class="nk-menu-text">فاکتورها</span>
+                    </a>
+                    <ul class="nk-menu-sub">
+                    <li class="nk-menu-item">
+                    <a href="invoice-list.html" class="nk-menu-link"><span class="nk-menu-text">لیست فاکتورها</span></a>
+                    </li>
+                    <li class="nk-menu-item">
+                    <a href="invoice-details.html" class="nk-menu-link"><span class="nk-menu-text">جزئیات فاکتور</span></a>
+                    </li>
+                    </ul>
+                    <!-- .nk-menu-sub -->
+                    </li> *@
+                    <!-- .nk-menu-item -->
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
+                            <span class="nk-menu-text">محصولات</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="Product" asp-action="AddProduct" class="nk-menu-link"><span class="nk-menu-text">افزودن محصول</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="nk-menu-link"><span class="nk-menu-text">لیست محصولات</span></a>
+                            </li>
+
+                        </ul>
+                        <!-- .nk-menu-sub -->
+                    </li>
+                    <!-- .nk-menu-item -->
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
+                            <span class="nk-menu-text">دسته بندی</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="Category" asp-action="AddNewCategory" class="nk-menu-link"><span class="nk-menu-text">افزودن دسته بندی</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="nk-menu-link"><span class="nk-menu-text">لیست دسته بندی ها</span></a>
+                            </li>
+
+                        </ul>
+                        <!-- .nk-menu-sub -->
+                    </li>
+
+                    <!-- .nk-menu-item -->
+                    
+                    <!-- .nk-menu-item -->
+             
+                    <!-- .nk-menu-heading -->
+                    <!-- .nk-menu-item -->
+
+                </ul>
+                <!-- .nk-menu -->
+            </div>
+            <!-- .nk-sidebar-menu -->
+        </div>
+        <!-- .nk-sidebar-content -->
+    </div>
+    <!-- .nk-sidebar-element -->
+</div>

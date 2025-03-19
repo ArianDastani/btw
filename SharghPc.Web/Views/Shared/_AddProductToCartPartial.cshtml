@@ -1,0 +1,12 @@
+﻿@model SharghPc.DataLayer.DTOs.Cart.AddProductToCartDto
+
+<form asp-controller="Cart"
+      asp-action="AddToCart"
+      method="post"
+      data-ajax="true"
+      data-ajax-success="OnSuccessAddProductToOrder"
+      data-ajax-method="post"
+      id="addProductToOrderForm">
+    <input type="hidden" asp-for="ProductId" id="add_product_to_order_id"/>
+    <input type="hidden" asp-for="Count" id="add_product_to_order_count"/>
+</form>
