@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SharghPc.DataLayer\SharghPc.DataLayer.csproj" />
+    <ProjectReference Include="..\SharghPc.DataLayer\mtnw.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
