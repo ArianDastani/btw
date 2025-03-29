@@ -3,7 +3,7 @@ using SharghPc.DataLayer.Entites.Common;
 
 namespace SharghPc.DataLayer.Entites.ProductOrder
 {
-    public class OrderDetail:BaseEntity
+    public class OrderDetail : BaseEntity
     {
         #region Prop
 

@@ -1,12 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using MarketPlace.Application.Services.Interfaces;
+﻿using MarketPlace.Application.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using SharghPc.Application.Services.Sms;
 using SharghPc.DataLayer.DTOs.Account;
 using SharghPc.DataLayer.Entites.Account;
-using SharghPc.DataLayer.Repository;
-using System.Security.Cryptography.X509Certificates;
-using SharghPc.Application.Services.Sms;
 using SharghPc.DataLayer.Entites.Roles;
+using SharghPc.DataLayer.Repository;
 using static SharghPc.DataLayer.DTOs.Account.RegisterUserDTO;
 
 namespace SharghPc.Application.Services.user
@@ -35,7 +33,7 @@ namespace SharghPc.Application.Services.user
             string VerifecationCode = new Random().Next(88738, 999939).ToString();
 
             var res = await _smsServices
-                .SendVerificationSms(mobileNumber,VerifecationCode);
+                .SendVerificationSms(mobileNumber, VerifecationCode);
 
             if (res)
             {
@@ -79,13 +77,13 @@ namespace SharghPc.Application.Services.user
 
         //public async Task<LoginUserResult> GetCodeForLogin(string verificationCode)
         //{
-            
+
         //}
 
         public async Task<User> GetUserByMobile(string mobile)
         {
             return await _userRepo.GetQuery().AsQueryable()
-                .Include(x=>x.Roles)
+                .Include(x => x.Roles)
                 .SingleOrDefaultAsync(x => x.Mobile == mobile);
 
         }
@@ -176,7 +174,7 @@ namespace SharghPc.Application.Services.user
 
         }
 
-        public async Task<EditUserProfileResult> EditUserProfile(EditUserProfileDto UserProfile,long UserId)
+        public async Task<EditUserProfileResult> EditUserProfile(EditUserProfileDto UserProfile, long UserId)
         {
             try
             {
@@ -215,7 +213,7 @@ namespace SharghPc.Application.Services.user
         public async Task<List<User>> GetAllUserForAdmin()
         {
             var users = await _userRepo.GetQuery()
-                .Include(x=>x.Roles)
+                .Include(x => x.Roles)
                 .Where(x => x.IsDelete == false)
                 .ToListAsync();
 
@@ -230,8 +228,8 @@ namespace SharghPc.Application.Services.user
             }
 
             var user = await _userRepo.GetQuery()
-                .Include(x=>x.Roles)
-                .FirstOrDefaultAsync(x=>x.Id==userId);
+                .Include(x => x.Roles)
+                .FirstOrDefaultAsync(x => x.Id == userId);
 
             if (user == null)
             {
@@ -288,18 +286,18 @@ namespace SharghPc.Application.Services.user
 
                     if (user == null) return false;
 
-                    user.RolesId=userDto.RoleId.Value;
+                    user.RolesId = userDto.RoleId.Value;
                     user.FirstName = userDto.FirstName;
                     user.LastName = userDto.LastName;
                     user.Mobile = userDto.Mobile;
-                    
+
                     _userRepo.EditEntity(user);
                     await _userRepo.SaveChanges();
 
                     return true;
                 }
             }
-            catch 
+            catch
             {
                 return false;
             }
@@ -309,7 +307,7 @@ namespace SharghPc.Application.Services.user
         {
             if (userId == 0 || userId == null) return false;
 
-            var user=await  _userRepo.GetEntityById(userId);
+            var user = await _userRepo.GetEntityById(userId);
 
             if (user == null) return false;
 

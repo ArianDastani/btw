@@ -13,7 +13,7 @@ namespace SharghPc.Web.Controllers
         private IContactServices _contactServices;
         public TicketController(IContactServices contactServices)
         {
-            _contactServices= contactServices;
+            _contactServices = contactServices;
         }
         public IActionResult Index()
         {
@@ -26,12 +26,12 @@ namespace SharghPc.Web.Controllers
             return View();
         }
 
-        [HttpPost("add-ticket"),ValidateAntiForgeryToken]
+        [HttpPost("add-ticket"), ValidateAntiForgeryToken]
         public async Task<IActionResult> AddTicket(AddTicketDTO addTicketDTO)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var res=await _contactServices.AddUserTicket(addTicketDTO,User.GetUserId());
+                var res = await _contactServices.AddUserTicket(addTicketDTO, User.GetUserId());
                 switch (res)
                 {
                     case AddTicketResult.Success:

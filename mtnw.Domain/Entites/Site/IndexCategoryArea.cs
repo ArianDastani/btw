@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SharghPc.DataLayer.Entites.Site
 {
-    public class IndexCategoryArea:BaseEntity
+    public class IndexCategoryArea : BaseEntity
     {
         [Display(Name = "عنوان")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

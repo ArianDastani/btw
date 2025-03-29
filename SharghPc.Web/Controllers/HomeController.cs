@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata;
 using SharghPc.Application.Services;
 using SharghPc.Application.Services.Index;
 using SharghPc.Application.Services.Product;
@@ -17,10 +16,10 @@ namespace SharghPc.Web.Controllers
 
         public HomeController(ISiteInfoServices siteInfoServices, IIndexServices indexServices, IProductServices productServices, Itestservices testServices)
         {
-	        _siteInfoServices = siteInfoServices;
-	        _indexServices = indexServices;
-	        _productServices = productServices;
-	        _testServices = testServices;
+            _siteInfoServices = siteInfoServices;
+            _indexServices = indexServices;
+            _productServices = productServices;
+            _testServices = testServices;
         }
         public async Task<IActionResult> Index()
         {
@@ -33,7 +32,7 @@ namespace SharghPc.Web.Controllers
                 SpecialProduct = await _productServices.GetSpecialProduct()
             };
 
-             //_testServices.Get();
+            //_testServices.Get();
 
             return Redirect("/admin");
         }

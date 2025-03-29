@@ -33,7 +33,7 @@ namespace SharghPc.Web.Areas.User.Controllers
 
             var order = await _orderServices.GetOrderDetailForSite(Id, User.GetUserId());
 
-            if(order == null) return NotFound();
+            if (order == null) return NotFound();
 
 
             return View(order);

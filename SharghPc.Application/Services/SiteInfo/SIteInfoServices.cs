@@ -131,8 +131,8 @@ namespace SharghPc.Application.Services.Site
             var customer = await _userRepository.GetQuery().CountAsync();
 
             var Lastorder = await _OrderRepository.GetQuery()
-                .Include(x=>x.User)
-                .Include(x=>x.RequestPay)
+                .Include(x => x.User)
+                .Include(x => x.RequestPay)
                 .OrderByDescending(x => x.CreateDate)
                 .Where(x => x.IsDelete == false)
                 .ToListAsync();

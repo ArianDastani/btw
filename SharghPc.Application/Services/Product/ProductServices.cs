@@ -54,7 +54,7 @@ namespace SharghPc.Application.Services.Product
                 .Include(x => x.ProductSelectedCategories)
                 .ThenInclude(x => x.ProductCategory)
                 .Where(x => x.IsDelete == false)
-                .OrderByDescending(x=>x.CreateDate)
+                .OrderByDescending(x => x.CreateDate)
                 .AsQueryable();
 
             switch (ProductDto.FilterProductOrderBy)

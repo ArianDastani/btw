@@ -39,7 +39,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
 
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddProduct(AddProductDto productDto,IFormFile image)
+        public async Task<IActionResult> AddProduct(AddProductDto productDto, IFormFile image)
         {
             if (!ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
 
             ViewBag.Categories = await _productServices.GetAllActiveProductCategories();
 
-            var res = await _productServices.AddProduct(productDto,image);
+            var res = await _productServices.AddProduct(productDto, image);
 
             if (res)
             {
@@ -74,7 +74,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> EditProduct(long productId)
         {
-            var res =await _productServices.GetProductForEdit(productId);
+            var res = await _productServices.GetProductForEdit(productId);
             if (res == null) return NotFound();
 
             ViewBag.Categories = await _productServices.GetAllActiveProductCategories();
@@ -83,7 +83,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditProduct(EditProductDto editProduct,IFormFile? image)
+        public async Task<IActionResult> EditProduct(EditProductDto editProduct, IFormFile? image)
         {
             if (!ModelState.IsValid)
             {
@@ -192,7 +192,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
             if (Id == 0) return NotFound();
 
             var res = await _productServices.GetAllProductGallery(Id);
-            if(res == null) return NotFound();
+            if (res == null) return NotFound();
             ViewBag.productId = Id;
             return View(res);
         }
@@ -218,7 +218,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
 
             }
 
-            return RedirectToAction("GetProductGalleries","Product",new {Id=productId});
+            return RedirectToAction("GetProductGalleries", "Product", new { Id = productId });
         }
 
         public async Task<IActionResult> RemoveProductGalleryImage(long Id)

@@ -90,7 +90,7 @@ namespace SharghPc.Web.Controllers
 
             return View(payment);
         }
-        [HttpPost,ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> PaymentMethods(IFormFile imagepay)
         {
             if (imagepay == null)
@@ -111,7 +111,7 @@ namespace SharghPc.Web.Controllers
 
             int sumAmount = cart.CartItems.Sum(x => x.Price * x.Count);
 
-            var pay = await _requestPay.AddRequestPay(sumAmount, User.GetUserId(), cm.GetBrowserId(HttpContext),imagepay);
+            var pay = await _requestPay.AddRequestPay(sumAmount, User.GetUserId(), cm.GetBrowserId(HttpContext), imagepay);
 
             var order = await _orderServices.AddNewOrder(new AddNewOrderDto()
             {

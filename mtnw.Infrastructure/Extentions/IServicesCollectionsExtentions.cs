@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
-using System.Threading.Tasks;
-using MarketPlace.Application.Services.Interfaces;
+﻿using MarketPlace.Application.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using SharghPc.Application.Services;
 using SharghPc.Application.Services.Cart;
@@ -22,6 +15,8 @@ using SharghPc.Application.Services.Site;
 using SharghPc.Application.Services.Sms;
 using SharghPc.Application.Services.user;
 using SharghPc.DataLayer.Repository;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace mtnw.Infrastructure.Extentions
 {

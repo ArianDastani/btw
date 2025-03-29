@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Http;
 using SharghPc.DataLayer.DTOs.RequestPay;
-using SharghPc.DataLayer.Entites.Account;
 
 namespace SharghPc.Application.Services.RequestPay
 {

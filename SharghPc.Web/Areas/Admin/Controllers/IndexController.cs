@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SharghPc.Application.Services.Index;
-using SharghPc.DataLayer.DTOs.Category;
 using SharghPc.DataLayer.DTOs.Index;
-using SharghPc.DataLayer.Migrations;
 
 namespace SharghPc.Web.Areas.Admin.Controllers
 {
@@ -82,7 +80,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditCategoryAreas(EditIndexCategoryAreaDto categoryAreaDto,IFormFile image)
+        public async Task<IActionResult> EditCategoryAreas(EditIndexCategoryAreaDto categoryAreaDto, IFormFile image)
         {
             var res = await _indexServices.EditCategoryAreas(categoryAreaDto, image);
 

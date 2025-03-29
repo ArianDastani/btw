@@ -2,7 +2,7 @@
 
 namespace SharghPc.DataLayer.Entites.Carts;
 
-public class CartItem:BaseEntity
+public class CartItem : BaseEntity
 {
 
     #region Prop

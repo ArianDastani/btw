@@ -3,7 +3,7 @@ using SharghPc.DataLayer.Entites.Common;
 
 namespace SharghPc.DataLayer.Entites.Roles
 {
-    public class Roles:BaseEntity
+    public class Roles : BaseEntity
     {
         #region Properties
         public string RoleName { get; set; } = null!;

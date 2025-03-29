@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using SharghPc.DataLayer.Entites.Common;
+﻿using SharghPc.DataLayer.Entites.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace SharghPc.DataLayer.Entites.Site
 {

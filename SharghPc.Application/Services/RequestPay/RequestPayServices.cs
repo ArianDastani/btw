@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using SharghPc.Application.Services.Cart;
 using SharghPc.DataLayer.DTOs.RequestPay;
 using SharghPc.DataLayer.Repository;
 
 namespace SharghPc.Application.Services.RequestPay
 {
-    public class RequestPayServices: IRequestPayServices
+    public class RequestPayServices : IRequestPayServices
     {
         #region Ctorf
 
@@ -25,9 +20,9 @@ namespace SharghPc.Application.Services.RequestPay
         }
 
         #endregion
-        public async Task<RequestPayResultDto> AddRequestPay(int amount, long? userId, Guid browserId,IFormFile imagepay)
+        public async Task<RequestPayResultDto> AddRequestPay(int amount, long? userId, Guid browserId, IFormFile imagepay)
         {
-           
+
             var getCart = await _cartServices.GetLastOpenCart(browserId, userId);
 
 

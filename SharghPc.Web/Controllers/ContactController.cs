@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using SharghPc.Application.Services.Contact;
 using SharghPc.Application.Services.Site;
-using SharghPc.DataLayer.DTOs;
 using SharghPc.DataLayer.DTOs.Contact;
 
 namespace SharghPc.Web.Controllers
 {
-    public class ContactController :SiteBaseController
+    public class ContactController : SiteBaseController
     {
         private readonly ISiteInfoServices _siteInfoServices;
         private IContactServices _contactServices;
@@ -38,7 +37,7 @@ namespace SharghPc.Web.Controllers
                 return View(dto);
             }
 
-            var ip= HttpContext.Connection.RemoteIpAddress.ToString();
+            var ip = HttpContext.Connection.RemoteIpAddress.ToString();
             var res = await _contactServices.CreateContactUs(dto, IdentityExtensions.GetUserId(User), ip);
 
             if (res)

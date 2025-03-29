@@ -1,10 +1,8 @@
-﻿using System.Net.NetworkInformation;
-using System.Reflection.PortableExecutable;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SharghPc.Application.Services.Site;
 using SharghPc.Application.Services.Sms;
 using SharghPc.Web.Areas.Admin.Controllers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Net.NetworkInformation;
 
 namespace RavistekTicket.Peresentation.Areas.Admin.Controllers
 {

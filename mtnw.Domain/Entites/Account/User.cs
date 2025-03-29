@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.AccessControl;
-using SharghPc.DataLayer.Entites.Common;
+﻿using SharghPc.DataLayer.Entites.Common;
 using SharghPc.DataLayer.Entites.Contact;
 using SharghPc.DataLayer.Entites.Finances;
+using System.ComponentModel.DataAnnotations;
 
 namespace SharghPc.DataLayer.Entites.Account
 {
@@ -36,11 +34,11 @@ namespace SharghPc.DataLayer.Entites.Account
 
         [Display(Name = "کلمه ی عبور")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
-        public string? Password { get; set; } 
+        public string? Password { get; set; }
 
         [Display(Name = "نام")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
-        public string? FirstName { get; set; } 
+        public string? FirstName { get; set; }
 
         [Display(Name = "نام خانوادگی")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
@@ -54,7 +52,7 @@ namespace SharghPc.DataLayer.Entites.Account
         public bool? IsBlocked { get; set; }
 
         public long RolesId { get; set; }
-        
+
 
         public virtual Roles.Roles Roles { get; set; }
         public ICollection<ContactUs> ContactUs { get; set; }

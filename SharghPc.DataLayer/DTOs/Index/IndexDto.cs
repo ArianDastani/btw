@@ -22,10 +22,10 @@ namespace SharghPc.DataLayer.DTOs.Index
 
         [Display(Name = "عنوان")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
-        public string? Title { get; set; } 
+        public string? Title { get; set; }
 
         [Display(Name = "عنوان در URL")]
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
-        public string? UrlName { get; set; } 
+        public string? UrlName { get; set; }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SharghPc.DataLayer.Entites.Common;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using SharghPc.DataLayer.Entites.Common;
 
 namespace SharghPc.DataLayer.Entites.Product
 {

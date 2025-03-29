@@ -25,7 +25,7 @@ namespace SharghPc.Application.Services.Cart
 
         public async Task<DataLayer.Entites.Carts.Cart> GetLastOpenCart(Guid BrowserId, long? UserId)
         {
-            
+
 
             var isCart = await _cartRepository.GetQuery()
                 .Include(x => x.CartItems)
@@ -47,7 +47,7 @@ namespace SharghPc.Application.Services.Cart
                 await _cartRepository.AddEntity(newcart);
                 await _cartRepository.SaveChanges();
 
-                
+
             }
 
             var Cart = await _cartRepository.GetQuery()

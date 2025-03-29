@@ -11,11 +11,11 @@ using SharghPc.DataLayer.Entites.Site;
 
 namespace SharghPc.DataLayer.Context
 {
-    public class SharghPcDbContext:DbContext
+    public class SharghPcDbContext : DbContext
     {
-        public SharghPcDbContext(DbContextOptions options):base(options)
+        public SharghPcDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
         public DbSet<User> Users { get; set; }
 

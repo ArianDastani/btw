@@ -1,17 +1,12 @@
 ﻿using SharghPc.DataLayer.DTOs.Account;
 using SharghPc.DataLayer.Entites.Account;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SharghPc.DataLayer.Entites.Roles;
+using System.ComponentModel.DataAnnotations;
 using static SharghPc.DataLayer.DTOs.Account.RegisterUserDTO;
 
 namespace SharghPc.Application.Services.user
 {
-    public interface IUserServices:IAsyncDisposable
+    public interface IUserServices : IAsyncDisposable
     {
         Task<RegisterUserResult> RegisterUser(RegisterUserDTO registerUserDTO);
         Task<bool> IsExitsMobile(string number);
@@ -19,8 +14,8 @@ namespace SharghPc.Application.Services.user
         public Task<string> SendCodeForLoginUser(string mobileNumber);
         Task<User> GetUserByMobile(string mobile);
         Task<ForgetPassResult> RecoveryUserPassword(ForgetPasswordDto forgetPass);
-        Task<bool> ChangePassword(ChangePasswordDto changePasswordDto,long UserId);
-        Task<bool> ActiveMobile(ActiveMobileDto  activeMobileDto);
+        Task<bool> ChangePassword(ChangePasswordDto changePasswordDto, long UserId);
+        Task<bool> ActiveMobile(ActiveMobileDto activeMobileDto);
         Task<EditUserProfileDto> GetUserProfile(long userId);
         Task<EditUserProfileResult> EditUserProfile(EditUserProfileDto UserProfile, long UserId);
         Task<List<User>> GetAllUserForAdmin();
@@ -57,7 +52,7 @@ namespace SharghPc.Application.Services.user
         public string? Password { get; set; }
 
         [Display(Name = "نام")]
-        public string? FirstName { get; set; } 
+        public string? FirstName { get; set; }
 
         [Display(Name = "نام خانوادگی")]
         public string? LastName { get; set; }

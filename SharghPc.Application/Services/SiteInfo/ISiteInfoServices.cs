@@ -1,9 +1,8 @@
-﻿using SharghPc.Application.Services.Order;
-using SharghPc.DataLayer.DTOs.Contact;
+﻿using SharghPc.DataLayer.DTOs.Contact;
 
 namespace SharghPc.Application.Services.Site
 {
-    public interface ISiteInfoServices:IAsyncDisposable
+    public interface ISiteInfoServices : IAsyncDisposable
     {
         Task<bool> AddOrEditContact(AddOrEditContentDto contactDto);
         public Task<LoadContactDto> GetContactById(long? id);

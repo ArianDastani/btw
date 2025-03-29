@@ -2,10 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using SharghPc.DataLayer.DTOs.Order;
 using SharghPc.DataLayer.Entites.Account;
-using SharghPc.DataLayer.Entites.Carts;
 using SharghPc.DataLayer.Entites.ProductOrder;
 using SharghPc.DataLayer.Repository;
-using System.ComponentModel.DataAnnotations;
 
 namespace SharghPc.Application.Services.Order
 {
@@ -230,8 +228,8 @@ namespace SharghPc.Application.Services.Order
         {
             var orders = await _OrderRepository.GetQuery()
                 .Include(p => p.OrderDetails)
-                .Include(x=>x.User)
-                .Where(p => p.OrderState == orderState&&p.IsDelete==false)
+                .Include(x => x.User)
+                .Where(p => p.OrderState == orderState && p.IsDelete == false)
                 .OrderByDescending(p => p.Id)
                 .Select(p => new OrdersDto
                 {
@@ -256,13 +254,13 @@ namespace SharghPc.Application.Services.Order
             }
 
             var order = await _OrderRepository.GetQuery()
-                .Include(x=>x.User)
-                .Include(x=>x.OrderDetails)
-                .Include(x=>x.Shipment)
-                .Include(x=>x.RequestPay)
+                .Include(x => x.User)
+                .Include(x => x.OrderDetails)
+                .Include(x => x.Shipment)
+                .Include(x => x.RequestPay)
                 .FirstOrDefaultAsync(x => x.Id == Id);
 
-            if (order==null)
+            if (order == null)
             {
                 return null;
             }
@@ -279,14 +277,14 @@ namespace SharghPc.Application.Services.Order
 
             if (order == null) return false;
 
-            if(order.OrderState == OrderState.Canceled) return  false;
+            if (order.OrderState == OrderState.Canceled) return false;
 
             if (order.OrderState == OrderState.Processing)
             {
-                 order.OrderState = OrderState.Delivered;
-                 _OrderRepository.EditEntity(order);
-                 await _OrderRepository.SaveChanges();
-                 return true;
+                order.OrderState = OrderState.Delivered;
+                _OrderRepository.EditEntity(order);
+                await _OrderRepository.SaveChanges();
+                return true;
             }
 
             return false;

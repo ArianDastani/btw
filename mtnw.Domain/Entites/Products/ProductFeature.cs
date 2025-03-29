@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SharghPc.DataLayer.Entites.Common;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharghPc.DataLayer.Entites.Common;
 
 namespace SharghPc.DataLayer.Entites.Products
 {
-    public class ProductFeature:BaseEntity
+    public class ProductFeature : BaseEntity
     {
         #region properties
 

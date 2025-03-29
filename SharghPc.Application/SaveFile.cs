@@ -8,7 +8,7 @@ namespace SharghPc.Application
         {
             if (file != null)
             {
-                if(!Directory.Exists(path)){Directory.CreateDirectory(path);}
+                if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
 
                 string pathfile = path + FileName;
 
@@ -18,7 +18,7 @@ namespace SharghPc.Application
                 }
             }
 
-            
+
         }
     }
 }

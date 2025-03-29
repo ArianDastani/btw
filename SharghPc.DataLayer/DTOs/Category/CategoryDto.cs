@@ -16,6 +16,6 @@ namespace SharghPc.DataLayer.DTOs.Category
         [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
         public string UrlName { get; set; }
 
-        
+
     }
 }

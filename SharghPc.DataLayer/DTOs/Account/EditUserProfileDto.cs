@@ -14,7 +14,7 @@ namespace SharghPc.DataLayer.DTOs.Account
         public string? Email { get; set; }
 
 
-        
+
 
         [Display(Name = "نام")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

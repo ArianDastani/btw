@@ -63,7 +63,7 @@ namespace SharghPc.Web.Areas.Admin.Controllers
         public async Task<IActionResult> EditCategory(long Id)
         {
             var res = await _categoryServices.GetCategoriesForEdit(Id);
-            if (res==null)
+            if (res == null)
             {
                 TempData[WarningMessage] = "یافت نشد";
                 return RedirectToAction("Index");

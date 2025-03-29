@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using SharghPc.DataLayer.Entites.Product;
 
 namespace SharghPc.DataLayer.DTOs.Product
 {

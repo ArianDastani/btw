@@ -1,7 +1,6 @@
-﻿using System;
+﻿using MarketPlace.Application.Services.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
-using MarketPlace.Application.Services.Interfaces;
 
 namespace SharghPc.Application.Services.Security
 {

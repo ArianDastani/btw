@@ -6,7 +6,7 @@ using SharghPc.DataLayer.Entites.Common;
 
 namespace SharghPc.DataLayer.Entites.Finances
 {
-    public class RequestPay:BaseEntity
+    public class RequestPay : BaseEntity
     {
         #region Properties
 

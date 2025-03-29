@@ -11,7 +11,7 @@ namespace SharghPc.Application.Services.image
 
 
 
-    public class ImgaeService: IImgaeService
+    public class ImgaeService : IImgaeService
     {
         public Task ProccessImage(IFormFile image, int fullscreenWidths)
         {

@@ -1,11 +1,5 @@
-﻿using SharghPc.DataLayer.Entites.Account;
-using SharghPc.DataLayer.Entites.Contact;
-using System;
-using System.Collections.Generic;
+﻿using SharghPc.DataLayer.Entites.Contact;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharghPc.DataLayer.DTOs.Contact
 {

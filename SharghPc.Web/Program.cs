@@ -1,28 +1,10 @@
-using MarketPlace.Application.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
-using SharghPc.Application.Services.Contact;
-using SharghPc.Application.Services.Security;
-using SharghPc.Application.Services.user;
-using SharghPc.DataLayer.Context;
-using SharghPc.DataLayer.Repository;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
 using GoogleReCaptcha.V3;
 using GoogleReCaptcha.V3.Interface;
-using SharghPc.Application.Services.Cart;
-using SharghPc.Application.Services.Category;
-using SharghPc.Application.Services.Index;
-using SharghPc.Application.Services.Order;
-using SharghPc.Application.Services.Site;
-using SharghPc.Application.Services.Sms;
-using SharghPc.Application.Services.Product;
-using SharghPc.Application.Services.RequestPay;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using mtnw.Infrastructure.Extentions;
-using SharghPc.Application.Services.Shipment;
-using SharghPc.Application.Services.image;
-using SharghPc.Application.Services;
+using SharghPc.DataLayer.Context;
+using System.Security.Claims;
 
 namespace SharghPc.Web
 {
@@ -105,7 +87,7 @@ namespace SharghPc.Web
 
             });
 
-                #endregion
+            #endregion
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -120,9 +102,9 @@ namespace SharghPc.Web
                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
-	            name: "default",
-	            pattern: "{controller=Home}/{action=Index}/{id?}",
-	            defaults: new { area = "admin" });
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}",
+                defaults: new { area = "admin" });
 
             app.Run();
         }

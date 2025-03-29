@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace SharghPc.Web.PresentationExtensions
+﻿namespace SharghPc.Web.PresentationExtensions
 {
     public static class SaveFile
     {
@@ -8,7 +6,7 @@ namespace SharghPc.Web.PresentationExtensions
         {
             if (file != null)
             {
-                if(!Directory.Exists(path)){Directory.CreateDirectory(path);}
+                if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
 
                 string pathfile = path + FileName;
 
@@ -18,7 +16,7 @@ namespace SharghPc.Web.PresentationExtensions
                 }
             }
 
-            
+
         }
     }
 }

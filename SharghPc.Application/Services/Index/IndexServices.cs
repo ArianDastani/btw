@@ -2,14 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SharghPc.DataLayer.DTOs.Index;
-using SharghPc.DataLayer.Entites.Product;
 using SharghPc.DataLayer.Entites.Site;
 using SharghPc.DataLayer.Repository;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace SharghPc.Application.Services.Index
 {
-    public class IndexServices:IIndexServices
+    public class IndexServices : IIndexServices
     {
         #region ctor
 
@@ -27,7 +25,7 @@ namespace SharghPc.Application.Services.Index
             await _repository.DisposeAsync();
         }
 
-        public async Task<bool> AddIndexCategoryArea(AddIndexCategoryAreaDto categoryAreaDto,IFormFile image)
+        public async Task<bool> AddIndexCategoryArea(AddIndexCategoryAreaDto categoryAreaDto, IFormFile image)
         {
             try
             {
@@ -135,7 +133,7 @@ namespace SharghPc.Application.Services.Index
             }
 
             categoryarea.Title = categoryAreaDto.Title;
-            categoryAreaDto.UrlName=categoryarea.UrlName;
+            categoryAreaDto.UrlName = categoryarea.UrlName;
 
             _repository.EditEntity(categoryarea);
             await _repository.SaveChanges();

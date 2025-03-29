@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using EndPoint.Site.Utilities;
+using GoogleReCaptcha.V3.Interface;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using SharghPc.Application.Services.Cart;
 using SharghPc.Application.Services.user;
 using SharghPc.DataLayer.DTOs.Account;
 using System.Security.Claims;
-using EndPoint.Site.Utilities;
-using GoogleReCaptcha.V3.Interface;
-using SharghPc.Application.Services.Cart;
 
 namespace SharghPc.Web.Controllers
 {
@@ -332,7 +332,7 @@ namespace SharghPc.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgetPassword(ForgetPasswordDto forgetPasswordDto)
         {
-         
+
 
             if (!ModelState.IsValid)
             {

@@ -1,6 +1,5 @@
 ﻿
 using SharghPc.DataLayer.Entites.Common;
-using SharghPc.DataLayer.Entites.Product;
 
 namespace SharghPc.DataLayer.Entites.Product
 {

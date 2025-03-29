@@ -5,7 +5,7 @@ using SharghPc.DataLayer.Repository;
 
 namespace SharghPc.Application.Services.Category
 {
-    public class CategoryServices:ICategoryServices
+    public class CategoryServices : ICategoryServices
     {
         #region ctor
 
@@ -27,13 +27,13 @@ namespace SharghPc.Application.Services.Category
         {
             if (parentId == 0 || parentId == null)
             {
-                  var category= await _categoryRepository.GetQuery().Include(x=>x.Parent)
-                    .Where(x => x.ParentId == null && x.IsDelete == false)
-                    .ToListAsync();
-                  return category;
+                var category = await _categoryRepository.GetQuery().Include(x => x.Parent)
+                  .Where(x => x.ParentId == null && x.IsDelete == false)
+                  .ToListAsync();
+                return category;
             }
 
-            var subCategory = await _categoryRepository.GetQuery().Include(x=>x.Parent)
+            var subCategory = await _categoryRepository.GetQuery().Include(x => x.Parent)
                 .Where(x => x.ParentId == parentId && x.IsDelete == false)
                 .ToListAsync();
             return subCategory;
@@ -85,7 +85,7 @@ namespace SharghPc.Application.Services.Category
 
         public async Task<bool> EditCategories(EditCategoriesDto categoriesDto)
         {
-            if (categoriesDto.ProductCategoryId == 0 || categoriesDto.ProductCategoryId == null) 
+            if (categoriesDto.ProductCategoryId == 0 || categoriesDto.ProductCategoryId == null)
             {
                 return false;
             }
@@ -99,7 +99,7 @@ namespace SharghPc.Application.Services.Category
 
             category.UrlName = categoriesDto.UrlName;
             category.Title = categoriesDto.Title;
-            category.LastUpdateDate= DateTime.Now;
+            category.LastUpdateDate = DateTime.Now;
             category.IsActive = true;
 
             _categoryRepository.EditEntity(category);
@@ -112,11 +112,11 @@ namespace SharghPc.Application.Services.Category
         {
             if (id == 0 || id == null) return false;
 
-            var cate=await _categoryRepository.GetEntityById(id);
+            var cate = await _categoryRepository.GetEntityById(id);
 
             if (cate == null) return false;
-           
-            cate.LastUpdateDate=DateTime.Now;
+
+            cate.LastUpdateDate = DateTime.Now;
             cate.IsDelete = true;
             _categoryRepository.EditEntity(cate);
             await _categoryRepository.SaveChanges();

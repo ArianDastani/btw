@@ -4,7 +4,7 @@ using SharghPc.DataLayer.Entites.Product;
 
 namespace SharghPc.Application.Services.Product
 {
-    public interface IProductServices:IAsyncDisposable
+    public interface IProductServices : IAsyncDisposable
     {
         public Task<FilterProductDto> FilterProduct(FilterProductDto ProductDto);
 
@@ -19,7 +19,7 @@ namespace SharghPc.Application.Services.Product
         public Task<bool> RemoveProductFeature(long Id);
         public Task<EditProductDto> GetProductForEdit(long productId);
 
-        public Task<bool> EditProduct(EditProductDto productDto,IFormFile image);
+        public Task<bool> EditProduct(EditProductDto productDto, IFormFile image);
         public Task<bool> SetToEndOfInventory(long productId);
 
         public Task<bool> RemoveProduct(long id);
@@ -27,7 +27,7 @@ namespace SharghPc.Application.Services.Product
 
         public Task<List<ProductGalleriesDto>> GetAllProductGallery(long productId);
 
-        public Task<AddProductImageGalleryResult> AddProductImageGallery(long productId,IFormFile image);
+        public Task<AddProductImageGalleryResult> AddProductImageGallery(long productId, IFormFile image);
         public Task<bool> RemoveProductImageGallery(long imageId);
 
         public Task<ProductDetailDto> GetProductDetailById(long productId);
@@ -40,6 +40,6 @@ namespace SharghPc.Application.Services.Product
         public Task<bool> AddToSpecialProduct(long id);
 
         public Task<DataLayer.Entites.Product.Product> GetSpecialProduct();
-        
+
     }
 }

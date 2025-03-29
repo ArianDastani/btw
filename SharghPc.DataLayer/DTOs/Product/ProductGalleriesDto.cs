@@ -8,7 +8,8 @@
         public string? ImageName { get; set; }
     }
 
-    public enum AddProductImageGalleryResult{
+    public enum AddProductImageGalleryResult
+    {
         Success,
         Error,
         NotFound

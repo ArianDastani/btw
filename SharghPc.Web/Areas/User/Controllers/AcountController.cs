@@ -28,7 +28,7 @@ namespace SharghPc.Web.Areas.User.Controllers
         }
 
 
-        [HttpPost,ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordDto passwordDto)
         {
             if (!ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace SharghPc.Web.Areas.User.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            var user =await _userServices.GetUserProfile(User.GetUserId());
+            var user = await _userServices.GetUserProfile(User.GetUserId());
 
             if (user == null)
             {
@@ -76,11 +76,11 @@ namespace SharghPc.Web.Areas.User.Controllers
         public async Task<IActionResult> Profile(EditUserProfileDto userProfileDto)
         {
             if (!ModelState.IsValid)
-            { 
+            {
                 return View(userProfileDto);
             }
 
-            var res = await _userServices.EditUserProfile(userProfileDto,User.GetUserId());
+            var res = await _userServices.EditUserProfile(userProfileDto, User.GetUserId());
 
             switch (res)
             {
@@ -101,7 +101,7 @@ namespace SharghPc.Web.Areas.User.Controllers
                     break;
                 case EditUserProfileResult.Success:
                     TempData[SuccessMessage] = "حساب کاربری شما با موفقیت ویرایش شد";
-                    
+
                     break;
             }
 

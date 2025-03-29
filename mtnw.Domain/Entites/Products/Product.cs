@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using SharghPc.DataLayer.Entites.Common;
+﻿using SharghPc.DataLayer.Entites.Common;
 using SharghPc.DataLayer.Entites.ProductOrder;
 using SharghPc.DataLayer.Entites.Products;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace SharghPc.DataLayer.Entites.Product
@@ -43,7 +43,7 @@ namespace SharghPc.DataLayer.Entites.Product
 
         [Display(Name = " محصول ویژه")]
         public bool IsSpecial { get; set; }
-        
+
 
         #endregion
 

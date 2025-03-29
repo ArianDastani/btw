@@ -28,10 +28,10 @@ namespace SharghPc.Application.Services
 
         public testservices(ISmsServices smsServices, IGenericRepository<User> userRepository, IUserServices userService, IGenericRepository<DataLayer.Entites.Product.Product> product)
         {
-	        _smsServices = smsServices;
-	        _userRepository = userRepository;
-	        _userService = userService;
-	        _product = product;
+            _smsServices = smsServices;
+            _userRepository = userRepository;
+            _userService = userService;
+            _product = product;
         }
 
         public async Task<ResultLoginAndRegisterWithMobileDto> SendSmsForLoginAndRegisterWithMobile(string mobile)
@@ -67,7 +67,7 @@ namespace SharghPc.Application.Services
                     IsMobileActive = false,
                     RolesId = 4,
                     LastUpdateDate = DateTime.Now,
-                    
+
                 };
 
                 await _userRepository.AddEntity(Currentuser);
@@ -75,7 +75,7 @@ namespace SharghPc.Application.Services
             }
             else
             {
-                user.MobileActiveCode=activeCode;
+                user.MobileActiveCode = activeCode;
                 _userRepository.EditEntity(user);
                 await _userRepository.SaveChanges();
             }
@@ -88,13 +88,13 @@ namespace SharghPc.Application.Services
             };
         }
 
-        public async Task<LoginUserResult> LoginAndRegisterWithMobile(string mobile,string VerifyCode)
+        public async Task<LoginUserResult> LoginAndRegisterWithMobile(string mobile, string VerifyCode)
         {
-            if (string.IsNullOrWhiteSpace(VerifyCode)||string.IsNullOrWhiteSpace(mobile)) return LoginUserResult.Null;
+            if (string.IsNullOrWhiteSpace(VerifyCode) || string.IsNullOrWhiteSpace(mobile)) return LoginUserResult.Null;
 
             var user = await _userService.GetUserByMobile(mobile);
 
-            if(user==null) return LoginUserResult.NotFound;
+            if (user == null) return LoginUserResult.NotFound;
 
             if (user.MobileActiveCode != VerifyCode)
             {
@@ -107,13 +107,13 @@ namespace SharghPc.Application.Services
 
         public void Get()
         {
-	        //var res = _product.GetQuery().ToList();
+            //var res = _product.GetQuery().ToList();
 
-         //   var res2= from s in res
-         
-         //    where int.Parse(s.ViewConter)>10
-         //       join pf in res o
-         //                              select s;
+            //   var res2= from s in res
+
+            //    where int.Parse(s.ViewConter)>10
+            //       join pf in res o
+            //                              select s;
         }
     }
 

@@ -27,7 +27,7 @@ namespace SharghPc.Web.Controllers
             {
                 return JsonResponseStatus.StatusResult(JsonResponseStatusType.Error, "در ثبت خطایی رخ داد", null);
             }
-            
+
             //var res=  await _orderServices.AddProductToOpenOrder(User.GetUserId(), orderDto);
 
             //if (res == false)

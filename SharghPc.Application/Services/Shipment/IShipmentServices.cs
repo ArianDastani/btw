@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SharghPc.Application.Services.Shipment
 {
-    public interface IShipmentServices:IAsyncDisposable
+    public interface IShipmentServices : IAsyncDisposable
     {
         public Task<DataLayer.Entites.Finances.Shipment> GetShipment(long UserId);
-        public Task<bool> AddUserShipment(AddUserShipmentDto  userShipmentDto, long UserId);
+        public Task<bool> AddUserShipment(AddUserShipmentDto userShipmentDto, long UserId);
         public Task<GetShipmentForEditDto> GetShipmentForEdit(long ShipmentId);
         public Task<bool> EditShipment(GetShipmentForEditDto shipmentForEditDto);
-        
+
     }
 
     public class ShipmentServices : IShipmentServices
@@ -49,7 +49,7 @@ namespace SharghPc.Application.Services.Shipment
             }
 
             var shipment = await _shipmentRepository.GetQuery()
-                .Include(x=>x.User)
+                .Include(x => x.User)
                 .FirstOrDefaultAsync(x => x.UserId == user.Id);
 
             if (shipment == null)
@@ -60,7 +60,7 @@ namespace SharghPc.Application.Services.Shipment
             return shipment;
         }
 
-        public async Task<bool> AddUserShipment(AddUserShipmentDto userShipmentDto,long UserId)
+        public async Task<bool> AddUserShipment(AddUserShipmentDto userShipmentDto, long UserId)
         {
             var user = await _userRepository.GetQuery().FirstOrDefaultAsync(x => x.Id == UserId);
 
@@ -85,7 +85,7 @@ namespace SharghPc.Application.Services.Shipment
                 FullAddress = userShipmentDto.FullAddress,
                 City = userShipmentDto.City,
                 State = userShipmentDto.State,
-                
+
             };
 
             await _shipmentRepository.AddEntity(newShipment);
@@ -102,7 +102,7 @@ namespace SharghPc.Application.Services.Shipment
 
             var shipment = await _shipmentRepository.GetEntityById(Id);
 
-            if (shipment==null)
+            if (shipment == null)
             {
                 return null;
             }
@@ -124,7 +124,7 @@ namespace SharghPc.Application.Services.Shipment
         {
             var res = await _shipmentRepository.GetEntityById(shipmentForEditDto.Id.Value);
 
-            if (res==null)
+            if (res == null)
             {
                 return false;
             }
@@ -132,9 +132,9 @@ namespace SharghPc.Application.Services.Shipment
             res.City = shipmentForEditDto.City;
             res.State = shipmentForEditDto.State;
             res.FullAddress = shipmentForEditDto.FullAddress;
-            res.RecipientFirstName=shipmentForEditDto.RecipientFirstName;
             res.RecipientFirstName = shipmentForEditDto.RecipientFirstName;
-            res.ZipCode=shipmentForEditDto.ZipCode;
+            res.RecipientFirstName = shipmentForEditDto.RecipientFirstName;
+            res.ZipCode = shipmentForEditDto.ZipCode;
 
             _shipmentRepository.EditEntity(res);
             await _shipmentRepository.SaveChanges();
@@ -186,8 +186,8 @@ namespace SharghPc.Application.Services.Shipment
     {
         public long? Id { get; set; }
         public string? FullAddress { get; set; }
-        public string? City { get; set; } 
-        public string? State { get; set; } 
+        public string? City { get; set; }
+        public string? State { get; set; }
         public string? ZipCode { get; set; }
         public string? RecipientLastName { get; set; }
         public string? RecipientFirstName { get; set; }

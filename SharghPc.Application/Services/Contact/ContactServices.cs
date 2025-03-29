@@ -44,9 +44,9 @@ namespace SharghPc.Application.Services.Contact
 
             var message = new TicketMessage
             {
-                TicketId=newticket.Id,
-                Text=addTicketDTO.Text,
-                SenderId=userId,
+                TicketId = newticket.Id,
+                Text = addTicketDTO.Text,
+                SenderId = userId,
             };
 
             await _ticketMessageRepository.AddEntity(message);
@@ -61,7 +61,7 @@ namespace SharghPc.Application.Services.Contact
             {
                 var newcontact = new ContactUs()
                 {
-                    UserId = userId != null && userId.Value!=0 ? userId.Value:(long?)null,
+                    UserId = userId != null && userId.Value != 0 ? userId.Value : (long?)null,
                     UserIp = userIp,
                     Subject = ContactUsDto.Subject,
                     CreateDate = DateTime.Now,
@@ -80,12 +80,12 @@ namespace SharghPc.Application.Services.Contact
                 return true;
 
             }
-            catch 
+            catch
             {
                 return false;
 
             }
-        
+
         }
 
         public async ValueTask DisposeAsync()

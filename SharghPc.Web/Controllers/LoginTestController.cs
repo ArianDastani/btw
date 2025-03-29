@@ -35,9 +35,9 @@ namespace SharghPc.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login2(string mobile,string code)
+        public async Task<IActionResult> Login2(string mobile, string code)
         {
-            var res = await _testservices.LoginAndRegisterWithMobile(mobile,code);
+            var res = await _testservices.LoginAndRegisterWithMobile(mobile, code);
 
             switch (res)
             {

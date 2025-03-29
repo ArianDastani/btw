@@ -1,11 +1,6 @@
 ﻿using SharghPc.DataLayer.Entites.Account;
 using SharghPc.DataLayer.Entites.Common;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharghPc.DataLayer.Entites.Contact
 {
@@ -13,8 +8,8 @@ namespace SharghPc.DataLayer.Entites.Contact
     {
         public long OwnerId { get; set; }
 
-        [Display(Name ="عنوان")]
-        [Required(ErrorMessage ="لطفا {} را وارد کنید")]
+        [Display(Name = "عنوان")]
+        [Required(ErrorMessage = "لطفا {} را وارد کنید")]
         public string Title { get; set; }
 
         [Display(Name = "بخش ارتباطی")]

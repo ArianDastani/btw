@@ -32,7 +32,7 @@ namespace SharghPc.Web.Controllers
 
         public async Task<IActionResult> searchProduct(string title)
         {
-            var product = await _productServices.FilterProduct(new FilterProductDto(){Title = title});
+            var product = await _productServices.FilterProduct(new FilterProductDto() { Title = title });
 
             ViewBag.ProductCategory = await _productServices.GetAllActiveProductCategories();
 

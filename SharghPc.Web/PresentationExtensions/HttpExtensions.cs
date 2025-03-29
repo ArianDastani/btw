@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace MarketPlace.Web.PresentationExtensions
+﻿namespace MarketPlace.Web.PresentationExtensions
 {
     public static class HttpExtensions
     {

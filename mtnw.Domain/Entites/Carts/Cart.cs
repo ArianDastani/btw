@@ -4,7 +4,7 @@ using SharghPc.DataLayer.Entites.Finances;
 
 namespace SharghPc.DataLayer.Entites.Carts
 {
-    public class Cart:BaseEntity
+    public class Cart : BaseEntity
     {
         #region prop
 
