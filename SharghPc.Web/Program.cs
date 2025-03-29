@@ -19,6 +19,7 @@ using SharghPc.Application.Services.Sms;
 using SharghPc.Application.Services.Product;
 using SharghPc.Application.Services.RequestPay;
 using System.Security.Claims;
+using mtnw.Infrastructure.Extentions;
 using SharghPc.Application.Services.Shipment;
 using SharghPc.Application.Services.image;
 using SharghPc.Application.Services;
@@ -36,25 +37,9 @@ namespace SharghPc.Web
 
             #region IoC
 
-            builder.Services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));
-            builder.Services.AddScoped(typeof(SharghPc.DataLayer.Repository.IGenericRepository<>), typeof(GenericRepository<>));
-            builder.Services.AddScoped<IUserServices, UserServices>();
-            builder.Services.AddScoped<IPasswordHelper, PasswordHelper>();
-            builder.Services.AddScoped<IContactServices, ContactServices>();
-            builder.Services.AddScoped<ISiteInfoServices, SIteInfoServices>();
-            builder.Services.AddScoped<ISmsServices, SmsServices>();
             builder.Services.AddHttpClient<ICaptchaValidator, GoogleReCaptchaValidator>();
-            builder.Services.AddScoped<IProductServices, ProductServices>();
-            builder.Services.AddScoped<IOrderServices, OrderServices>();
-            builder.Services.AddScoped<ICategoryServices, CategoryServices>();
-            builder.Services.AddScoped<ICartServices, CartServices>();
-            builder.Services.AddScoped<IRequestPayServices, RequestPayServices>();
-            builder.Services.AddScoped<IIndexServices, IndexServices>();
-            builder.Services.AddScoped<IShipmentServices, ShipmentServices>();
-            builder.Services.AddTransient<IImgaeService, ImgaeService>();
-            builder.Services.AddTransient<Itestservices, testservices>();
 
-
+            builder.Services.AddInfrastructureLayer();
 
 
             #endregion

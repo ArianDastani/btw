@@ -120,6 +120,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\mtnw.Infrastructure\mtnw.Infrastructure.csproj" />
     <ProjectReference Include="..\SharghPc.Application\mtnw.Application.csproj" />
     <ProjectReference Include="..\SharghPc.DataLayer\mtnw.Persistence.csproj" />
   </ItemGroup>
