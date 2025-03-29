@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SharghPc.DataLayer.Context;
 using SharghPc.DataLayer.Entites.Common;
-
+using SharghPc.DataLayer.Repository;
 
 namespace SharghPc.DataLayer.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> :  IGenericRepository<T> where T : BaseEntity
     {
         private readonly SharghPcDbContext _context;
         private readonly DbSet<T> _dbSet;

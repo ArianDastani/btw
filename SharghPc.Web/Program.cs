@@ -37,7 +37,7 @@ namespace SharghPc.Web
             #region IoC
 
             builder.Services.AddSingleton<HtmlEncoder>(HtmlEncoder.Create(new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic }));
-            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped(typeof(SharghPc.DataLayer.Repository.IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IPasswordHelper, PasswordHelper>();
             builder.Services.AddScoped<IContactServices, ContactServices>();

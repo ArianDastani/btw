@@ -1,7 +1,7 @@
-﻿using SharghPc.DataLayer.Entites.Common;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.AccessControl;
+using SharghPc.DataLayer.Entites.Common;
 using SharghPc.DataLayer.Entites.Contact;
 using SharghPc.DataLayer.Entites.Finances;
 
