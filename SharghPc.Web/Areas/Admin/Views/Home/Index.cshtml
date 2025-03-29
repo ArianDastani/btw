@@ -137,108 +137,112 @@
                         </div>
                         <!-- .col -->
                         <!-- .col -->
-                        <div class="col-xxl-6 col-md-8 col-lg-6">
+                    <div class="col-xxl-12">
+	                    <div class="card card-full">
+		                    <div class="card-inner">
+			                    <div class="card-title-group">
+				                    <div class="card-title">
+					                    <h6 class="title">سفارشات اخیر</h6>
+				                    </div>
+			                    </div>
+		                    </div>
+		                    <div class="nk-tb-list mt-n2">
+			                    <div class="nk-tb-item nk-tb-head">
+				                    <div class="nk-tb-col">
+					                    <span>شماره سفارش</span>
+				                    </div>
+				                    <div class="nk-tb-col tb-col-sm">
+					                    <span>مشتری</span>
+				                    </div>
+				                    <div class="nk-tb-col tb-col-md">
+					                    <span>تاریخ</span>
+				                    </div>
+				                    <div class="nk-tb-col"><span>مبلغ</span></div>
+				                    <div class="nk-tb-col">
+					                    <span class="d-none d-sm-inline">وضعیت</span>
+				                    </div>
+			                    </div>
+			                    @if (Model.LastOrders != null)
+			                    {
+				                    @foreach (var item in Model.LastOrders)
+				                    {
+					                    <div class="nk-tb-item">
+						                    <div class="nk-tb-col">
+							                    <span class="tb-lead"><a href="#">#@item.Id</a></span>
+						                    </div>
+						                    <div class="nk-tb-col tb-col-sm">
+							                    <div class="user-card">
+								                    <div class="user-avatar sm bg-purple-dim">
+									                    <span>ف‌ت</span>
+								                    </div>
+								                    <div class="user-name">
+									                    <span class="tb-lead">@item.User.LastName</span>
+								                    </div>
+							                    </div>
+						                    </div>
+						                    <div class="nk-tb-col tb-col-md">
+							                    <span class="tb-sub">1402/08/21</span>
+						                    </div>
+						                    <div class="nk-tb-col">
+							                    <span class="tb-sub tb-amount">@item.RequestPay.Amount.ToString("n0") <span>تومان</span></span>
+						                    </div>
+						                    <div class="nk-tb-col">
+							                    <span class="badge badge-dot badge-dot-xs bg-success">@item.OrderState.GetEnumName()</span>
+						                    </div>
+					                    </div>
+				                    }
+			                    }
+
+
+		                    </div>
+	                    </div>
+	                    <!-- .card -->
+                    </div>
+
+                        <div class="col-xxl-6 col-md-6 col-lg-6">
                             <div class="nk-block nk-block-lg">
-                                <div class="nk-block-head">
-                                    <div class="nk-block-head-content">
-                                        <h4 class="title nk-block-title">ارسال پیام خوش آمدگویی</h4>
-                                       
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-inner">
-                                        <form asp-area="Admin" asp-controller="Home" asp-action="SendWellcomSms" class="form-validate">
-                                            <div class="row g-gs">
-                                              
-                                             
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="fv-phone">شماره همراه</label>
-                                                        <div class="form-control-wrap">
-                                                            <div class="input-group">
-                                                                <input name="number" type="number" class="form-control" required />
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text" id="fv-phone">98+</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <button type="submit" class="btn btn-lg btn-primary">ذخیره و ارسال</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                              
+	                            <div class="card">
+		                            <div class="card-inner">
+			                            <div class="card-title-group">
+				                            <div class="card-title">
+					                            <h6 class="title">پیام خوش  آمدگویی</h6>
+					                            <br/>
+				                            </div>
+				                            <br/>
+			                            </div>
+			                            <form asp-area="Admin" asp-controller="Home" asp-action="SendWellcomSms" class="form-validate">
+				                            <div class="row g-gs">
+
+
+					                            <div class="col-md-12">
+						                            <div class="form-group">
+							                            <label class="form-label" for="fv-phone">شماره همراه</label>
+							                            <div class="form-control-wrap">
+								                            <div class="input-group">
+									                            <input name="number" type="number" class="form-control" required/>
+									                            <div class="input-group-append">
+										                            <span class="input-group-text" id="fv-phone">98+</span>
+									                            </div>
+								                            </div>
+							                            </div>
+						                            </div>
+					                            </div>
+
+					                            <div class="col-md-12">
+						                            <div class="form-group">
+							                            <button type="submit" class="btn btn-lg btn-primary">ذخیره و ارسال</button>
+						                            </div>
+					                            </div>
+				                            </div>
+			                            </form>
+		                            </div>
+	                            </div>
                             </div>
                         </div>
-                        <div class="col-xxl-12">
-                            <div class="card card-full">
-                                <div class="card-inner">
-                                    <div class="card-title-group">
-                                        <div class="card-title">
-                                            <h6 class="title">سفارشات اخیر</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="nk-tb-list mt-n2">
-                                    <div class="nk-tb-item nk-tb-head">
-                                        <div class="nk-tb-col">
-                                            <span>شماره سفارش</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-sm">
-                                            <span>مشتری</span>
-                                        </div>
-                                        <div class="nk-tb-col tb-col-md">
-                                            <span>تاریخ</span>
-                                        </div>
-                                        <div class="nk-tb-col"><span>مبلغ</span></div>
-                                        <div class="nk-tb-col">
-                                            <span class="d-none d-sm-inline">وضعیت</span>
-                                        </div>
-                                    </div>
-                                    @if (Model.LastOrders != null)
-                                    {
-                                        @foreach (var item in Model.LastOrders)
-                                        {
-                                            <div class="nk-tb-item">
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-lead"><a href="#">#@item.Id</a></span>
-                                                </div>
-                                                <div class="nk-tb-col tb-col-sm">
-                                                    <div class="user-card">
-                                                        <div class="user-avatar sm bg-purple-dim">
-                                                            <span>ف‌ت</span>
-                                                        </div>
-                                                        <div class="user-name">
-                                                            <span class="tb-lead">@item.User.LastName</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="nk-tb-col tb-col-md">
-                                                    <span class="tb-sub">1402/08/21</span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="tb-sub tb-amount">@item.RequestPay.Amount.ToString("n0") <span>تومان</span></span>
-                                                </div>
-                                                <div class="nk-tb-col">
-                                                    <span class="badge badge-dot badge-dot-xs bg-success">@item.OrderState.GetEnumName()</span>
-                                                </div>
-                                            </div>
-                                        }
-                                    }
+                       
 
-
-                                </div>
-                            </div>
-                            <!-- .card -->
-                        </div>
-
-                        <div class="col-xxl-12 col-md-8 col-lg-6">
+                        <div class="col-xxl-6 col-md-6 col-lg-6">
                             <div class="card h-100">
                                 <div class="card-inner">
                                     <div class="card-title-group mb-2">
